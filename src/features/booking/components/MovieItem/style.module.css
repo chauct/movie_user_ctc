@@ -1,0 +1,89 @@
+.item .thumbnail {
+  position: relative;
+}
+.item .thumbnail::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.65);
+  width: 100%;
+  opacity: 0;
+  transition: all 0.5s;
+}
+.item .thumbnail img {
+  height: 350px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.item:hover .thumbnail::after {
+  opacity: 1;
+}
+.item .info {
+  margin-top: 25px;
+  text-align: center;
+}
+.item .info h2 {
+  font-size: 17px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.item .info p {
+  font-weight: 300;
+  font-size: 17px;
+}
+.item .btn_shop {
+  position: relative;
+  text-transform: uppercase;
+  outline: 0;
+  font-size: 12px;
+  line-height: 1.2em;
+  letter-spacing: 0.35em;
+  font-weight: 700;
+  color: #fff;
+  background-color: transparent;
+  border: 2px solid #fff;
+  padding: 18px 36px 16px;
+  cursor: pointer;
+  z-index: 3;
+  transition: top 0.3s ease 0.4s, opacity 0.3s ease 0.4s;
+}
+.item .btn_shop::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 4px;
+  background: rgb(255, 255, 255);
+  -webkit-transition: width 0.35s ease;
+  -o-transition: width 0.35s ease;
+  transition: width 0.35s ease;
+}
+.item .btn_shop:hover::after {
+  width: 100%;
+}
+.item {
+  position: relative;
+}
+.item .btn {
+  position: absolute;
+  top: 33%;
+  left: 20%;
+  opacity: 0;
+  transition: all 0.5s;
+}
+.item:hover .btn {
+  opacity: 1;
+}
+/*   */
+.item .info {
+  transition: all 0.4s ease-in-out;
+}
+.item:hover .info {
+  transform: translateY(-5px);
+}

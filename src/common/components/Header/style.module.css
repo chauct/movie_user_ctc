@@ -1,0 +1,73 @@
+.header {
+  padding-top: 25px;
+  padding-bottom: 25px;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  z-index: 10;
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); */
+  /* background-color: #fff; */
+  /* margin-bottom: 80px; */
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.header .nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header .logo img {
+  height: 17px;
+}
+.header .menu ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0;
+}
+.header .menu .nav_link {
+  display: block;
+  margin-right: 25px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  line-height: 23px;
+  transition: all 0.5s;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.header .login button {
+  position: relative;
+  text-transform: uppercase;
+  outline: 0;
+  font-size: 12px;
+  line-height: 1.2em;
+  letter-spacing: 0.35em;
+  font-weight: 700;
+  /* transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out,
+    border-color 0.2s ease-in-out; */
+  color: #fff;
+  background-color: transparent;
+  border: 2px solid #fff;
+  padding: 18px 36px 16px;
+  cursor: pointer;
+  z-index: 3;
+  transition: top 0.3s ease 0.4s, opacity 0.3s ease 0.4s;
+}
+.header .login button::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 4px;
+  background: rgb(255, 255, 255);
+  -webkit-transition: width 0.35s ease;
+  -o-transition: width 0.35s ease;
+  transition: width 0.35s ease;
+}
+.header .login button:hover::after {
+  width: 100%;
+}
