@@ -1,10 +1,38 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./style.module.css";
 import { Col, Row } from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchFooterAction } from "features/booking/action";
 
 function Footer() {
+  const footerInfo = useSelector((state) => state.booking.footer);
+
+  const dispatch = useDispatch();
+
+  const fetchFooter = async () => {
+    dispatch(fetchFooterAction);
+  };
+
+  useEffect(() => {
+    fetchFooter();
+  }, []);
+
   return (
     <>
+      <div className={styles.partner}>
+        <div className="container">
+          <div className={styles.flex}>
+            {footerInfo.map((item) => {
+              return (
+                <div className={styles.icon} key={item.maHeThongRap}>
+                  <img width={90} src={item.logo} alt="" />
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
       <div className={styles.footer}>
         <div className="container">
           <Row gutter={[24, 24]}>
@@ -93,6 +121,7 @@ function Footer() {
           </Row>
         </div>
       </div>
+
       <div class={styles.coppy_right}>
         <p>© 2022 Qode Interactive, All Rights Reserved</p>
       </div>

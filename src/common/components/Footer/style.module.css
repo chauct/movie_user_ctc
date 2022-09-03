@@ -1,9 +1,32 @@
 /* footer */
+.partner {
+  background-image: url("https://cinerama.qodeinteractive.com/wp-content/uploads/2018/04/alfa-home-parallax-3.jpg");
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+  padding: 100px 0;
+  background-attachment: fixed;
+}
+.partner .flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.partner .flex img {
+  cursor: pointer;
+  -webkit-transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.partner .flex img:hover {
+  transform: scale(1.1);
+}
 .footer {
   background-color: #1c1c1c;
   padding: 96px 0;
   color: #ccc;
 }
+
 .footer .item p {
   color: #fff;
   font-size: 12px;

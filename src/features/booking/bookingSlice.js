@@ -1,6 +1,8 @@
 import produce from "immer";
 import {
   SET_CAROUSELS,
+  SET_CINEMA_SYSTEM,
+  SET_FOOTER,
   SET_MOVIES,
   SET_PHIM_DANG_CHIEU,
   SET_PHIM_SAP_CHIEU,
@@ -12,6 +14,8 @@ const initialState = {
   dangChieu: true,
   sapChieu: true,
   moviesDefault: [],
+  cinemaSystem: [],
+  footer: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -52,6 +56,18 @@ const reducer = (state = initialState, action) => {
         draft.movies = draft.moviesDefault.filter(
           (film) => film.sapChieu === draft.sapChieu
         );
+      });
+      return nextState;
+    }
+    case SET_CINEMA_SYSTEM: {
+      const nextState = produce(state, (draft) => {
+        draft.cinemaSystem = action.payload;
+      });
+      return nextState;
+    }
+    case SET_FOOTER: {
+      const nextState = produce(state, (draft) => {
+        draft.footer = action.payload;
       });
       return nextState;
     }

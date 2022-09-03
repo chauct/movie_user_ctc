@@ -54,7 +54,7 @@ function Header(props) {
             </ul>
           </div>
           <div className={styles.login}>
-            <button>Login</button>
+            <button>Đăng nhập</button>
           </div>
         </div>
       </div>

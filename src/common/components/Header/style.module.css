@@ -54,6 +54,7 @@
   cursor: pointer;
   z-index: 3;
   transition: top 0.3s ease 0.4s, opacity 0.3s ease 0.4s;
+  margin-right: 20px;
 }
 .header .login button::after {
   content: "";

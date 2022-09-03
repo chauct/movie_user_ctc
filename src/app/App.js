@@ -26,11 +26,9 @@ function App() {
         <Route path="/" component={Home} exact />
         <Route path="/contact" component={Contact} />
         <Route path="/movie_list" component={Contact} />
-
-        {/* <Route path="/theater" component={Theater} /> */}
         <Route path="/news" component={News} />
         {/* <Route path="/apps" component={Apps} /> */}
-        <Route path="/detail" component={Detail} />
+        <Route path="/detail/:id" component={Detail} />
         <Route path="/booking" component={Booking} />
         <Route path="/payment" component={Payment} />
         <Route path="/signin" component={Signin} />

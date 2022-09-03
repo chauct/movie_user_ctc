@@ -1,3 +1,80 @@
 .tabs {
   margin-top: 40px;
 }
+.cumRap {
+  display: flex;
+  align-items: center;
+  margin-right: 0;
+  padding-right: 0;
+  width: 400px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px;
+}
+
+.img_cumRap {
+  margin-left: 0;
+  padding-left: 0;
+}
+.info_cumRap {
+  text-align: left;
+  margin-left: 20px;
+}
+.info_cumRap p {
+  color: #000;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.6;
+}
+.info_cumRap span {
+  font-size: 15px;
+  font-weight: 300;
+}
+
+.tab_cumRap {
+  margin-left: -24px;
+}
+.movie {
+  display: flex;
+}
+.movie img {
+  margin-right: 15px;
+}
+.btn {
+  width: 90px;
+  height: 40px;
+  border-radius: 0;
+  transition: all 0.4s ease-in-out;
+  position: relative;
+}
+/* transition-duration: 0.4s;
+  -webkit-transition-duration: 0.4s; */
+.btn:hover {
+  background-color: #000;
+  border-color: #000;
+  color: #fff;
+}
+.movie {
+  padding: 20px 0;
+  border-bottom: 1px solid #ccc;
+}
+.movie_info p {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.6;
+  color: #b00000;
+  padding-bottom: 15px;
+}
+
+.tabPane {
+  height: 560px;
+  border: 1px solid #e0e0e0;
+  flex-grow: 1;
+  overflow-y: scroll;
+  border-left: none;
+}
+
+.img {
+  width: 100px !important;
+  height: 126px !important;
+  object-fit: cover;
+}

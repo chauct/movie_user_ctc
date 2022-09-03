@@ -12,6 +12,9 @@ import {
 } from "features/booking/action";
 
 function MovieList() {
+  const dangChieu = useSelector((state) => state.booking.dangChieu);
+  const sapChieu = useSelector((state) => state.booking.sapChieu);
+
   const dispatch = useDispatch();
   const movieInfo = useSelector((state) => state.booking.movies);
 
@@ -30,7 +33,7 @@ function MovieList() {
     const { className, style, onClick } = props;
     return (
       <div
-        className={`${className} ${styles["slick-prev"]}`}
+        className={`${className} ${styles["slick-prev "]}`}
         style={{ ...style, display: "block" }}
         onClick={onClick}
       />
@@ -86,11 +89,19 @@ function MovieList() {
     prevArrow: <SamplePrevArrow />,
   };
 
+  let activeClassDC = dangChieu === true ? "active" : "none_active";
+  // console.log("activeDC", activeClassDC);
+
+  let activeClassSC = sapChieu === true ? "active" : "none_active";
+
+  // console.log("activeSC", activeClassSC);
+
   return (
     <div className={styles.movie_list}>
       <div className="container">
         <div className={styles.title_movie}>
           <button
+            className={`${styles[activeClassDC]}`}
             onClick={() => {
               const action = { type: SET_PHIM_DANG_CHIEU };
               dispatch(action);
@@ -99,6 +110,7 @@ function MovieList() {
             phim đang chiếu
           </button>
           <button
+            className={`${styles[activeClassSC]}`}
             onClick={() => {
               const action = { type: SET_PHIM_SAP_CHIEU };
               dispatch(action);

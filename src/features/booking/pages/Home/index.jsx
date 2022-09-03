@@ -4,8 +4,11 @@ import Theater from "features/booking/components/Theater";
 import React, { useEffect } from "react";
 import MovieList from "features/booking/components/MovieList";
 import Slider from "features/booking/components/Slider";
-import { useDispatch } from "react-redux";
-import { fetchMoviesAction } from "features/booking/action";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchCinemaSystemAction,
+  fetchMoviesAction,
+} from "features/booking/action";
 // import instance from "api/instance";
 // import axios from "axios";
 // import { Pagination } from "antd";
@@ -17,9 +20,15 @@ function Home() {
     dispatch(fetchMoviesAction);
   };
 
+  const fetchCinemaSystem = async () => {
+    dispatch(fetchCinemaSystemAction);
+  };
+
   useEffect(() => {
     fetchMovies();
+    fetchCinemaSystem();
   }, []);
+
   return (
     <div>
       <Slider />

@@ -4,6 +4,8 @@ export const SET_CAROUSELS = "booking/SET_CAROUSELS";
 export const SET_MOVIES = "booking/SET_MOVIES";
 export const SET_PHIM_DANG_CHIEU = "booking/SET_PHIM_DANG_CHIEU";
 export const SET_PHIM_SAP_CHIEU = "booking/SET_PHIM_SAP_CHIEU";
+export const SET_CINEMA_SYSTEM = "booking/SET_CINEMA_SYSTEM";
+export const SET_FOOTER = "booking/SET_FOOTER";
 
 export const fetchCarouselAction = async (dispatch) => {
   try {
@@ -32,4 +34,33 @@ export const fetchMoviesAction = async (dispatch) => {
     });
     console.log(res, "list movie");
   } catch (err) {}
+};
+
+export const fetchCinemaSystemAction = async (dispatch) => {
+  try {
+    const res = await instance.request({
+      url: "/api/QuanLyRap/LayThongTinLichChieuHeThongRap",
+      method: "GET",
+    });
+    dispatch({
+      type: SET_CINEMA_SYSTEM,
+      payload: res.data.content,
+    });
+    console.log(res, "action list rạp chiếu");
+  } catch (err) {}
+};
+
+export const fetchFooterAction = async (dispatch) => {
+  try {
+    const res = await instance.request({
+      url: "/api/QuanLyRap/LayThongTinHeThongRap",
+      method: "GET",
+    });
+    dispatch({
+      type: SET_FOOTER,
+      payload: res.data.content,
+    });
+
+    console.log(res, "footer");
+  } catch (error) {}
 };
