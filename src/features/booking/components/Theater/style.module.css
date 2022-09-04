@@ -1,5 +1,6 @@
 .tabs {
   margin-top: 40px;
+  border: 1px solid #e0e0e0;
 }
 .cumRap {
   display: flex;
@@ -67,7 +68,6 @@
 
 .tabPane {
   height: 560px;
-  border: 1px solid #e0e0e0;
   flex-grow: 1;
   overflow-y: scroll;
   border-left: none;

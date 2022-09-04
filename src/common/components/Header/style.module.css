@@ -6,10 +6,13 @@
   right: 0px;
   left: 0px;
   z-index: 10;
-  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); */
-  /* background-color: #fff; */
-  /* margin-bottom: 80px; */
+
   background-color: rgba(0, 0, 0, 0.5);
+}
+.active {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  /* margin-bottom: 80px;
 }
 .header .nav {
   display: flex;
@@ -34,8 +37,12 @@
   letter-spacing: 0.2em;
   line-height: 23px;
   transition: all 0.5s;
-  color: #fff;
+  color: #cecece;
   text-transform: uppercase;
+}
+
+.header .menu .nav_link:hover {
+  color: #fff;
 }
 
 .header .login button {
@@ -51,7 +58,7 @@
   color: #fff;
   background-color: transparent;
   border: 2px solid #fff;
-  padding: 18px 36px 16px;
+  padding: 16px 24px 14px;
   cursor: pointer;
   z-index: 3;
   transition: top 0.3s ease 0.4s, opacity 0.3s ease 0.4s;

@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./style.module.css";
 import { NavLink, useHistory } from "react-router-dom";
 
 function Header(props) {
+  const [header, setHeader] = useState(false);
+
   const history = useHistory();
 
   const goToHome = () => {
     history.push("/");
   };
+
+  const changeBackgroundHeader = () => {
+    if (window.scrollY >= 80) {
+      setHeader(true);
+    }
+    setHeader(false);
+  };
+  const active = header === true ? "active" : "header";
+  window.addEventListener("scroll", changeBackgroundHeader);
   return (
     <div className={styles.header}>
       <div className="container">
@@ -21,26 +32,16 @@ function Header(props) {
           <div className={styles.menu}>
             <ul className="menu_list">
               <li>
-                <NavLink to="/" className={styles.nav_link} exact>
-                  Trang chủ
-                </NavLink>
-              </li>
-              <li>
                 <NavLink to="/" className={styles.nav_link}>
                   Lịch chiếu
                 </NavLink>
               </li>
-              <li>
-                <NavLink to="/contact" className={styles.nav_link}>
-                  Liên hệ
-                </NavLink>
-              </li>
 
-              {/* <li>
+              <li>
                 <NavLink to="/theater" className={styles.nav_link}>
                   Cụm rạp
                 </NavLink>
-              </li> */}
+              </li>
               <li>
                 <NavLink to="/news" className={styles.nav_link}>
                   Tin tức
