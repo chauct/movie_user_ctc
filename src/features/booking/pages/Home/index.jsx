@@ -4,14 +4,11 @@ import Theater from "features/booking/components/Theater";
 import React, { useEffect } from "react";
 import MovieList from "features/booking/components/MovieList";
 import Slider from "features/booking/components/Slider";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   fetchCinemaSystemAction,
   fetchMoviesAction,
 } from "features/booking/action";
-// import instance from "api/instance";
-// import axios from "axios";
-// import { Pagination } from "antd";
 
 function Home() {
   const dispatch = useDispatch();

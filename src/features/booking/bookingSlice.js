@@ -11,8 +11,8 @@ import {
 const initialState = {
   carousel: [],
   movies: [],
-  dangChieu: true,
-  sapChieu: true,
+  dangChieu: false,
+  sapChieu: false,
   moviesDefault: [],
   cinemaSystem: [],
   footer: [],
@@ -29,7 +29,7 @@ const reducer = (state = initialState, action) => {
     case SET_MOVIES: {
       const nextState = produce(state, (draft) => {
         draft.movies = action.payload;
-        draft.moviesDefault = action.payload;
+        draft.moviesDefault = draft.movies;
       });
       return nextState;
     }

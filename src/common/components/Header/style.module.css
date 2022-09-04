@@ -18,6 +18,7 @@
 }
 .header .logo img {
   height: 17px;
+  cursor: pointer;
 }
 .header .menu ul {
   display: flex;

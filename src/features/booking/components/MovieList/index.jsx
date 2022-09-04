@@ -47,44 +47,14 @@ function MovieList() {
       </div>
     );
   const settings = {
-    // className: "center variable-width",
-    // centerMode: true,
+    dots: true,
     infinite: true,
     centerPadding: "60px",
     slidesToShow: 4,
-    slidesToScroll: 4,
     speed: 500,
     rows: 2,
     // slidesPerRow: 2,
     variableWidth: true,
-    dots: true,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-    centerPadding: "60px",
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
   };
@@ -100,6 +70,7 @@ function MovieList() {
     <div className={styles.movie_list}>
       <div className="container">
         <div className={styles.title_movie}>
+          <button className={styles.active}>Tất cả</button>
           <button
             className={`${styles[activeClassDC]}`}
             onClick={() => {

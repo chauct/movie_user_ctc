@@ -46,11 +46,11 @@ function Header(props) {
                   Tin tức
                 </NavLink>
               </li>
-              {/* <li>
-                <NavLink to="/apps" className={styles.nav_link}>
+              <li>
+                <NavLink to="/detail/:id" className={styles.nav_link}>
                   Ứng dụng
                 </NavLink>
-              </li> */}
+              </li>
             </ul>
           </div>
           <div className={styles.login}>
