@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Carousel } from "antd";
 import styles from "./style.module.css";
-import "./style.css";
+
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCarouselAction } from "features/booking/action";
 
@@ -48,13 +48,13 @@ function Slider() {
 
       <div className={styles.item}>
         <img
-          src="https://shaders-slider.uiinitiative.com/images/05.jpg"
+          src="https://cinerama.qodeinteractive.com/wp-content/uploads/2018/04/alfa-home-slider-img-1.jpg"
           alt=""
         />
       </div>
       <div className={styles.item}>
         <img
-          src="https://cinerama.qodeinteractive.com/wp-content/uploads/2018/05/home-9-port-img-3.jpg"
+          src="https://demo.gloriathemes.com/noxe/demo/wp-content/uploads/2020/02/video-player-2.jpg"
           alt=""
         />
       </div>

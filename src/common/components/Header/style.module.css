@@ -6,14 +6,15 @@
   right: 0px;
   left: 0px;
   z-index: 10;
-
   background-color: rgba(0, 0, 0, 0.5);
+  transition: all 0.5s;
 }
-.active {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+.header.active {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
   background-color: #fff;
-  /* margin-bottom: 80px;
+  color: #000;
 }
+
 .header .nav {
   display: flex;
   justify-content: space-between;
@@ -29,6 +30,9 @@
   align-items: center;
   margin: 0;
 }
+.header .menu .menu_list li {
+  color: #cecece;
+}
 .header .menu .nav_link {
   display: block;
   margin-right: 25px;
@@ -36,8 +40,8 @@
   font-weight: 700;
   letter-spacing: 0.2em;
   line-height: 23px;
-  transition: all 0.5s;
   color: #cecece;
+  transition: all 0.5s;
   text-transform: uppercase;
 }
 
@@ -45,7 +49,7 @@
   color: #fff;
 }
 
-.header .login button {
+.header .login .btn_login {
   position: relative;
   text-transform: uppercase;
   outline: 0;
@@ -53,18 +57,33 @@
   line-height: 1.2em;
   letter-spacing: 0.35em;
   font-weight: 700;
-  /* transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out,
-    border-color 0.2s ease-in-out; */
-  color: #fff;
+  color: #cecece;
   background-color: transparent;
-  border: 2px solid #fff;
+  border: 2px solid #cecece;
   padding: 16px 24px 14px;
   cursor: pointer;
   z-index: 3;
   transition: top 0.3s ease 0.4s, opacity 0.3s ease 0.4s;
   margin-right: 20px;
 }
-.header .login button::after {
+.header .btn_dark {
+  position: relative;
+  text-transform: uppercase;
+  outline: 0;
+  font-size: 12px;
+  line-height: 1.2em;
+  letter-spacing: 0.35em;
+  font-weight: 700;
+  background-color: transparent;
+  padding: 16px 24px 14px;
+  cursor: pointer;
+  z-index: 3;
+  transition: top 0.3s ease 0.4s, opacity 0.3s ease 0.4s;
+  margin-right: 20px;
+  color: #000;
+  border: 2px solid #000;
+}
+.header .login .btn_login::after {
   content: "";
   display: block;
   position: absolute;
@@ -72,11 +91,35 @@
   left: 0;
   width: 0;
   height: 4px;
-  background: rgb(255, 255, 255);
+  background: #cecece;
+  -webkit-transition: width 0.35s ease;
+  -o-transition: width 0.35s ease;
+  transition: width 0.35s ease;
+}
+.header .login .btn_dark::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 4px;
+  background: #000000;
   -webkit-transition: width 0.35s ease;
   -o-transition: width 0.35s ease;
   transition: width 0.35s ease;
 }
 .header .login button:hover::after {
   width: 100%;
+}
+.color {
+  color: #000;
+  display: block;
+  margin-right: 25px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  line-height: 23px;
+  transition: all 0.5s;
+  text-transform: uppercase;
 }
