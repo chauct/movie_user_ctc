@@ -59,10 +59,10 @@ function MovieList() {
     prevArrow: <SamplePrevArrow />,
   };
 
-  let activeClassDC = dangChieu === true ? "active" : "none_active";
+  let activeClassDC = dangChieu === true ? "active" : "";
   // console.log("activeDC", activeClassDC);
 
-  let activeClassSC = sapChieu === true ? "active" : "none_active";
+  let activeClassSC = sapChieu === true ? "active" : "";
 
   // console.log("activeSC", activeClassSC);
 
