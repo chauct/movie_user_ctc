@@ -1,3 +1,6 @@
+.item {
+  cursor: pointer;
+}
 .item .thumbnail {
   position: relative;
 }
@@ -15,6 +18,8 @@
 .item .thumbnail img {
   height: 350px;
   object-fit: cover;
+  display: block;
+  width: 100%;
   object-position: center;
 }
 

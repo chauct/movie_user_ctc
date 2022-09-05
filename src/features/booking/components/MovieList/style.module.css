@@ -1,13 +1,16 @@
 .movie_list {
-  margin-top: 40px;
+  margin-top: 50px;
 }
 
-.movie_list .title_movie {
-  margin-bottom: 30px;
-  margin-left: 10px;
-  text-align: center;
+.movie_list .movie_heading {
+  margin-bottom: 40px;
 }
-/* .movie_list .title_movie button {
+.movie_list .movie_heading ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.movie_list .movie_heading .nav_link {
   background-color: transparent;
   border: none;
   margin-right: 40px;
@@ -21,7 +24,11 @@
   position: relative;
   padding: 0 0 5px 0;
 }
-.movie_list .title_movie button::after {
+.movie_list .movie_heading .nav_link .active {
+  color: red;
+}
+
+.movie_list .movie_heading .nav_link::after {
   content: "";
   display: block;
   position: absolute;
@@ -34,9 +41,10 @@
   -o-transition: width 0.3s ease;
   transition: width 0.3s ease;
 }
-.movie_list .title_movie button:hover::after {
+.movie_list .movie_heading .nav_link:hover::after {
   width: 100%;
-} */
+}
+
 .movie_list .item {
   padding: 10px;
 }
@@ -62,7 +70,7 @@
 .active {
   background-color: red;
 }
-.active::after {
+/* .active::after {
   content: "";
   display: block;
   position: absolute;
@@ -76,6 +84,13 @@
   transition: width 0.3s ease;
 }
 
+.none_active {
+  background-color: rgb(221, 255, 27);
+} */
+.active_Film {
+  color: red;
+  background-color: aqua;
+}
 .none_active {
   background-color: rgb(221, 255, 27);
 }

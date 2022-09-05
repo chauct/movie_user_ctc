@@ -11,8 +11,8 @@ import {
 const initialState = {
   carousel: [],
   movies: [],
-  dangChieu: false,
-  sapChieu: false,
+  dangChieu: true,
+  sapChieu: true,
   moviesDefault: [],
   cinemaSystem: [],
   footer: [],

@@ -58,37 +58,39 @@ function MovieList() {
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
   };
+  let activeClassDC = dangChieu === true ? "active_Film" : "none_active";
 
-  let activeClassDC = dangChieu === true ? "active" : "";
-  // console.log("activeDC", activeClassDC);
+  let activeClassSC = sapChieu === true ? "active_Film" : "none_active";
 
-  let activeClassSC = sapChieu === true ? "active" : "";
-
-  // console.log("activeSC", activeClassSC);
-
+  console.log("activeSC", activeClassSC);
   return (
     <div className={styles.movie_list}>
       <div className="container">
-        <div className={styles.title_movie}>
-          <button className={styles.active}>Tất cả</button>
-          <button
-            className={`${styles[activeClassDC]}`}
-            onClick={() => {
-              const action = { type: SET_PHIM_DANG_CHIEU };
-              dispatch(action);
-            }}
-          >
-            phim đang chiếu
-          </button>
-          <button
-            className={`${styles[activeClassSC]}`}
-            onClick={() => {
-              const action = { type: SET_PHIM_SAP_CHIEU };
-              dispatch(action);
-            }}
-          >
-            phim sắp chiếu
-          </button>
+        <div className={styles.movie_heading}>
+          <ul className="menu_list">
+            <li>
+              <span
+                onClick={() => {
+                  const action = { type: SET_PHIM_DANG_CHIEU };
+                  dispatch(action);
+                }}
+                className={`${styles[activeClassDC]} ${styles.nav_link}`}
+              >
+                Đang chiếu
+              </span>
+            </li>
+            <li>
+              <span
+                onClick={() => {
+                  const action = { type: SET_PHIM_SAP_CHIEU };
+                  dispatch(action);
+                }}
+                className={`${styles[activeClassSC]} ${styles.nav_link}`}
+              >
+                Sắp chiếu
+              </span>
+            </li>
+          </ul>
         </div>
         <Slider {...settings} className={styles.slider}>
           {movieInfo.map((item) => {
