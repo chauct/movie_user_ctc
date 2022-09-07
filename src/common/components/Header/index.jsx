@@ -14,6 +14,10 @@ function Header(props) {
     history.push("/");
   };
 
+  const goToSignup = () => {
+    history.push("/signup");
+  };
+
   const changeBackgroundHeader = () => {
     if (window.scrollY >= 80) {
       setHeader(true);
@@ -93,9 +97,10 @@ function Header(props) {
           </div>
           <div className={styles.login}>
             <button
+              onClick={goToSignup}
               className={color ? `${styles.btn_dark} ` : `${styles.btn_login}`}
             >
-              Đăng nhập
+              Đăng kí
             </button>
           </div>
         </div>

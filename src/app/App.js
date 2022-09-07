@@ -1,3 +1,5 @@
+import React, { Suspense, lazy } from "react";
+
 import PageNotFound from "common/components/404";
 
 import Footer from "common/components/Footer";
@@ -18,6 +20,10 @@ import Contact from "features/booking/components/Contact";
 
 export const history = createBrowserHistory();
 
+const PaymentComponent = lazy(() =>
+  import("features/booking/pages/Payment/index")
+);
+
 function App() {
   return (
     <BrowserRouter>
@@ -30,7 +36,10 @@ function App() {
         {/* <Route path="/apps" component={Apps} /> */}
         <Route path="/detail/:id" component={Detail} />
         <Route path="/booking" component={Booking} />
-        <Route path="/payment/:id" component={Payment} />
+        {/* <Suspense fallback={<h1>Loadding ....</h1>}>
+          <PaymentComponent path="/payment/:id" component={Payment} />
+        </Suspense> */}
+        <Route path="/payment" component={Payment} />
         <Route path="/signin" component={Signin} />
         <Route path="/signup" component={Signup} />
         <Route path="/movies" component={MovieManagement} />

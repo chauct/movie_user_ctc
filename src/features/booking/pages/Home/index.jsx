@@ -31,8 +31,8 @@ function Home() {
       <Slider />
       <MovieList />
       <Theater />
-      <Contact />
-      <News />
+      {/* <Contact />
+      <News /> */}
     </div>
   );
 }
