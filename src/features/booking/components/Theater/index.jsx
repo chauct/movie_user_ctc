@@ -8,7 +8,7 @@ const { TabPane } = Tabs;
 function Theater() {
   const cinemaSystemInfo = useSelector((state) => state.booking.cinemaSystem);
 
-  console.log("hệ thống rạp chiếu", cinemaSystemInfo);
+  // console.log("hệ thống rạp chiếu", cinemaSystemInfo);
 
   const [tabPosition, setTabPosition] = useState("left");
 

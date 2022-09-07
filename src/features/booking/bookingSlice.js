@@ -4,6 +4,7 @@ import {
   SET_CINEMA_SYSTEM,
   SET_FOOTER,
   SET_MOVIES,
+  SET_MOVIES_DETAIL,
   SET_PHIM_DANG_CHIEU,
   SET_PHIM_SAP_CHIEU,
 } from "./action";
@@ -16,6 +17,7 @@ const initialState = {
   moviesDefault: [],
   cinemaSystem: [],
   footer: [],
+  moviesDetail: {},
 };
 
 const reducer = (state = initialState, action) => {
@@ -68,6 +70,12 @@ const reducer = (state = initialState, action) => {
     case SET_FOOTER: {
       const nextState = produce(state, (draft) => {
         draft.footer = action.payload;
+      });
+      return nextState;
+    }
+    case SET_MOVIES_DETAIL: {
+      const nextState = produce(state, (draft) => {
+        draft.moviesDetail = action.payload;
       });
       return nextState;
     }

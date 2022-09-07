@@ -30,7 +30,7 @@ function App() {
         {/* <Route path="/apps" component={Apps} /> */}
         <Route path="/detail/:id" component={Detail} />
         <Route path="/booking" component={Booking} />
-        <Route path="/payment" component={Payment} />
+        <Route path="/payment/:id" component={Payment} />
         <Route path="/signin" component={Signin} />
         <Route path="/signup" component={Signup} />
         <Route path="/movies" component={MovieManagement} />

@@ -62,7 +62,7 @@ function MovieList() {
 
   let activeClassSC = sapChieu === true ? "active_Film" : "none_active";
 
-  console.log("activeSC", activeClassSC);
+  // console.log("activeSC", activeClassSC);
   return (
     <div className={styles.movie_list}>
       <div className="container">
