@@ -66,6 +66,7 @@
   transition: top 0.3s ease 0.4s, opacity 0.3s ease 0.4s;
   margin-right: 20px;
 }
+/* dark */
 .header .btn_dark {
   position: relative;
   text-transform: uppercase;
@@ -96,6 +97,7 @@
   -o-transition: width 0.35s ease;
   transition: width 0.35s ease;
 }
+/* dark */
 .header .login .btn_dark::after {
   content: "";
   display: block;
@@ -122,4 +124,39 @@
   line-height: 23px;
   transition: all 0.5s;
   text-transform: uppercase;
+}
+
+/* css 2 button menu login */
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+.nav_link,
+.logout {
+  display: block;
+  /* margin-right: 25px; */
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  line-height: 23px;
+  color: #cecece;
+  transition: all 0.5s;
+  text-transform: uppercase;
+}
+.logout {
+  text-transform: uppercase;
+  outline: 0;
+  font-size: 12px;
+  line-height: 1.2em;
+  letter-spacing: 0.35em;
+  font-weight: 700;
+  background-color: transparent;
+  padding: 16px 24px 14px;
+  cursor: pointer;
+
+  transition: top 0.3s ease 0.4s, opacity 0.3s ease 0.4s;
+  margin-right: 20px;
+  color: #fff;
+  border: 2px solid #fff;
 }

@@ -1,0 +1,154 @@
+.payment {
+  padding: 100px 0;
+}
+/* seat */
+.seat {
+  margin: 20px;
+}
+.topContent {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+}
+.topContent .leftTitle .info p:first-of-type {
+  color: #44c020;
+  font-weight: 600;
+}
+.topContent .leftTitle .info p:last-of-type,
+.topContent .rightTitle p:first-of-type {
+  color: #ccc;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.topContent .rightTitle p:last-of-type {
+  color: #dd3333;
+  font-size: 35px;
+  font-weight: 600;
+}
+.screen {
+  width: 98%;
+  background-color: #000;
+  height: 15px;
+  margin-bottom: 5px;
+}
+.trapezoid {
+  border-bottom: 50px solid #ccc;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  height: 0;
+  width: 98%;
+  opacity: 0.5;
+  filter: drop-shadow(0px 28px 7px #000);
+  margin-bottom: 40px;
+}
+.trapezoid h3 {
+  text-align: center;
+  padding-top: 10px;
+  color: #000;
+}
+
+.flex_seat {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+  text-align: center;
+}
+
+.text_comment {
+  color: rgb(0, 0, 0);
+  font-size: 15px;
+  /* font-weight: 400; */
+}
+/* booking */
+.rightcheckout {
+  box-shadow: 0 0 15px 0 rgba (0, 0, 0, 0.3);
+}
+.booking {
+  position: fixed;
+  left: 0;
+  height: 100vh;
+  padding: 0px 8%;
+  overflow: auto;
+  position: relative;
+  box-shadow: rgb(0 0 0 / 30%) 0px 0px 15px;
+  background-color: rgb(255, 255, 255);
+}
+
+.booking .total {
+  color: #44c020;
+  font-size: 41px;
+  text-align: center;
+  font-weight: 500;
+  padding: 20px;
+  border-bottom: 0.1px dashed #ccc;
+  margin: 0;
+}
+.booking .movieName,
+.booking .chair,
+.booking .email,
+.booking .name {
+  padding: 20px;
+  border-bottom: 0.1px dashed #ccc;
+}
+.booking .movieName span {
+  font-weight: 600;
+  font-size: 17px;
+  text-transform: capitalize;
+  display: block;
+  padding-bottom: 5px;
+}
+.booking .movieName p {
+  margin-bottom: 0;
+  font-weight: 400;
+}
+.booking .chair {
+  display: flex;
+  justify-content: space-between;
+}
+.booking .chair div:first-of-type {
+  color: #dd3333;
+}
+.booking .chair div:last-of-type {
+  color: #44c020;
+}
+.booking .email label,
+.booking .name label {
+  color: #7a7a7a;
+  font-size: 15px;
+}
+.booking .email input,
+.booking .name input {
+  border: none;
+  padding-top: 5px;
+}
+.booking .notice {
+  padding: 20px 0 40px 0;
+}
+.booking .notice i {
+  font-size: 17px;
+  color: #ff481f;
+  margin-right: 5px;
+}
+.booking .notice a {
+  color: #eb6648;
+}
+.booking .btn_checkout button {
+  text-transform: uppercase;
+  width: 100%;
+  padding: 15px 0;
+  border: 2px solid #000;
+  font-size: 14px;
+  line-height: 1.2em;
+  letter-spacing: 0.35em;
+  font-weight: 700;
+  color: #000;
+  background-color: transparent;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+.booking .btn_checkout button:hover {
+  background-color: #000;
+  color: #fff;
+}

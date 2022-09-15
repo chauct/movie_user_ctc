@@ -1,5 +1,8 @@
 import produce from "immer";
+
 import {
+  DAT_GHE,
+  DAT_VE_THANH_CONG,
   SET_CAROUSELS,
   SET_CINEMA_SYSTEM,
   SET_FOOTER,
@@ -7,6 +10,7 @@ import {
   SET_MOVIES_DETAIL,
   SET_PHIM_DANG_CHIEU,
   SET_PHIM_SAP_CHIEU,
+  THONG_TIN_PHONG_VE,
 } from "./action";
 
 const initialState = {
@@ -18,6 +22,8 @@ const initialState = {
   cinemaSystem: [],
   footer: [],
   moviesDetail: {},
+  thongTinPhongVe: {},
+  danhSachGheDangDat: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -78,6 +84,30 @@ const reducer = (state = initialState, action) => {
         draft.moviesDetail = action.payload;
       });
       return nextState;
+    }
+    case THONG_TIN_PHONG_VE: {
+      const nextState = produce(state, (draft) => {
+        draft.thongTinPhongVe = action.payload;
+      });
+      return nextState;
+    }
+    case DAT_GHE: {
+      const nextState = produce(state, (draft) => {
+        const danhSachGheDangDat = draft.danhSachGheDangDat;
+        const index = danhSachGheDangDat.findIndex(
+          (gheDD) => gheDD.maGhe === action.gheDangDat.maGhe
+        );
+        if (index !== -1) {
+          // Nếu tìm thấy ghế được chọn trong mảng có nghĩa là trước đó đã click vào rồi => xóa đi
+          danhSachGheDangDat.splice(index, 1);
+        } else {
+          danhSachGheDangDat.push(action.gheDangDat);
+        }
+      });
+      return nextState;
+    }
+    case DAT_VE_THANH_CONG: {
+      return { ...state, danhSachGheDangDat: [] };
     }
     default:
       return state;

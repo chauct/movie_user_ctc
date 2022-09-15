@@ -3,8 +3,13 @@ import styles from "./style.module.css";
 import logo from "assets/img/Logo-light.png";
 import logoDark from "assets/img/Logo-dark.png";
 import { NavLink, useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { SIGN_IN_ACTION } from "features/authentication/action";
 
-function Header(props) {
+function Header() {
+  const dispatch = useDispatch();
+  const userProfile = useSelector((state) => state.auth.profile);
+
   const [header, setHeader] = useState(false);
   const [color, setColor] = useState(false);
   const [navbarLogo, setNavbarLogo] = useState(logo);
@@ -14,10 +19,44 @@ function Header(props) {
     history.push("/");
   };
 
-  const goToSignup = () => {
-    history.push("/signup");
+  const goToSignin = () => {
+    history.push("/signin");
   };
 
+  const handleLogout = (e) => {
+    e.preventDefault();
+    localStorage.removeItem("token");
+    dispatch({
+      type: SIGN_IN_ACTION,
+      payload: null,
+    });
+    goToHome();
+  };
+
+  const renderUserInfo = () => {
+    if (userProfile) {
+      return (
+        <div className={styles.menu}>
+          <a href="#" className={styles.nav_link}>
+            Hi, {userProfile.hoTen}
+          </a>
+          <button onClick={handleLogout} className={styles.logout} href="#">
+            Đăng xuất
+          </button>
+        </div>
+      );
+    }
+    return (
+      <div className={styles.login}>
+        <button
+          onClick={goToSignin}
+          className={color ? `${styles.btn_dark} ` : `${styles.btn_login}`}
+        >
+          Đăng nhập
+        </button>
+      </div>
+    );
+  };
   const changeBackgroundHeader = () => {
     if (window.scrollY >= 80) {
       setHeader(true);
@@ -95,14 +134,8 @@ function Header(props) {
               </li>
             </ul>
           </div>
-          <div className={styles.login}>
-            <button
-              onClick={goToSignup}
-              className={color ? `${styles.btn_dark} ` : `${styles.btn_login}`}
-            >
-              Đăng kí
-            </button>
-          </div>
+
+          {renderUserInfo()}
         </div>
       </div>
     </div>

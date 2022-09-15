@@ -10,6 +10,7 @@
     "antd": "^4.22.8",
     "axios": "^0.27.2",
     "boxicons": "^2.1.2",
+    "formik": "^2.2.9",
     "immer": "^9.0.15",
     "lodash": "^4.17.21",
     "moment": "^2.29.4",
@@ -23,7 +24,9 @@
     "redux": "^4.2.0",
     "redux-thunk": "^2.4.1",
     "slick-carousel": "^1.8.1",
-    "web-vitals": "^2.1.4"
+    "sweetalert2": "^11.4.33",
+    "web-vitals": "^2.1.4",
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start": "react-scripts start",

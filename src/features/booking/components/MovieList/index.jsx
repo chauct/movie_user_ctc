@@ -46,6 +46,7 @@ function MovieList() {
         <Spin size="large" />
       </div>
     );
+
   const settings = {
     dots: true,
     infinite: true,

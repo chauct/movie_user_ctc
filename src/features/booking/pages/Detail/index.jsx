@@ -8,16 +8,17 @@ import "./style.css";
 import { Tabs, Row, Col, Rate, Button } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMoviesDetailAction } from "features/booking/action";
-import { useRouteMatch } from "react-router-dom";
+import { useHistory, useRouteMatch } from "react-router-dom";
 
 import moment from "moment";
 
 const { TabPane } = Tabs;
-// const { Option } = Select;
 
 const desc = ["terrible", "bad", "normal", "good", "wonderful"];
 
 function Detail() {
+  const history = useHistory();
+
   const [value, setValue] = useState(3);
 
   const [display, setDisplay] = useState(true);
@@ -27,6 +28,8 @@ function Detail() {
   const match = useRouteMatch();
 
   const dispatch = useDispatch();
+
+  const goToPayMent = () => {};
 
   const movieDetail = useSelector((state) => state.booking.moviesDetail);
 
@@ -94,7 +97,9 @@ function Detail() {
                           moment(movieDetail.ngayKhoiChieu).format("HH:mm:ss")}
                       </span>
                     </p>
-                    <button className={styles.btn_booking}>Đặt vé </button>
+                    <a href="#lichChieu" className={styles.btn_booking}>
+                      Đặt vé
+                    </a>
                   </div>
                   <div>
                     <div>
@@ -125,60 +130,64 @@ function Detail() {
           </Row>
 
           {display && (
-            <Row className={styles.schedule}>
-              <Tabs tabPosition={"left"}>
-                {movieDetail.heThongRapChieu?.map((item) => {
-                  return (
-                    <TabPane
-                      key={item.maHeThongRap}
-                      tab={
-                        <div className={styles.heThongRap}>
-                          <img
-                            width={50}
-                            src={item.logo}
-                            alt={item.tenHeThongRap}
-                          />
-                          <span>{item.tenHeThongRap}</span>
-                        </div>
-                      }
-                    >
-                      {item.cumRapChieu?.map((cumRap) => {
-                        return (
-                          <div
-                            key={cumRap.maHeThongRap}
-                            className={styles.cumRap}
-                          >
-                            <h2>{cumRap.tenCumRap}</h2>
-                            <p>{cumRap.diaChi}</p>
-                            <Row>
-                              {cumRap.lichChieuPhim?.map((lichChieuPhim) => {
-                                return (
-                                  <Col key={lichChieuPhim.maLichChieu} span={6}>
-                                    <Button className={styles.btn_date}>
-                                      {moment(
+            <Tabs tabPosition={"left"} className={styles.schedule}>
+              {movieDetail.heThongRapChieu?.map((item) => {
+                return (
+                  <TabPane
+                    key={item.maHeThongRap}
+                    tab={
+                      <div className={styles.heThongRap}>
+                        <img
+                          width={50}
+                          src={item.logo}
+                          alt={item.tenHeThongRap}
+                        />
+                        <span>{item.tenHeThongRap}</span>
+                      </div>
+                    }
+                  >
+                    {item.cumRapChieu?.map((cumRap) => {
+                      return (
+                        <div
+                          key={cumRap.maHeThongRap}
+                          className={styles.cumRap}
+                        >
+                          <h2>{cumRap.tenCumRap}</h2>
+                          <p>{cumRap.diaChi}</p>
+                          <Row>
+                            {cumRap.lichChieuPhim?.map((lichChieuPhim) => {
+                              return (
+                                <Col key={lichChieuPhim.maLichChieu} span={6}>
+                                  <Button
+                                    onClick={() =>
+                                      history.push(
+                                        `/payment/${lichChieuPhim.maLichChieu}`
+                                      )
+                                    }
+                                    className={styles.btn_date}
+                                  >
+                                    {moment(
+                                      lichChieuPhim.ngayChieuGioChieu
+                                    ).format("DD.MM.YYYY") +
+                                      " ~ " +
+                                      moment(
                                         lichChieuPhim.ngayChieuGioChieu
-                                      ).format("DD.MM.YYYY") +
-                                        " ~ " +
-                                        moment(
-                                          lichChieuPhim.ngayChieuGioChieu
-                                        ).format("HH:mm:ss")}
-                                    </Button>
-                                  </Col>
-                                );
-                              })}
-                            </Row>
-                          </div>
-                        );
-                      })}
-                    </TabPane>
-                  );
-                })}
-              </Tabs>
-            </Row>
+                                      ).format("HH:mm:ss")}
+                                  </Button>
+                                </Col>
+                              );
+                            })}
+                          </Row>
+                        </div>
+                      );
+                    })}
+                  </TabPane>
+                );
+              })}
+            </Tabs>
           )}
-
           {none && (
-            <Row className={styles.feedback}>
+            <div className={styles.feedback}>
               <span>Bạn nghĩ gì về phim này?</span>
               <span>
                 <Rate tooltips={desc} onChange={setValue} value={value} />
@@ -188,8 +197,9 @@ function Detail() {
                   ""
                 )}
               </span>
-            </Row>
+            </div>
           )}
+          {/* </Row> */}
         </div>
       </CustomCard>
     </div>
