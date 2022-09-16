@@ -20,6 +20,9 @@ import Contact from "features/booking/components/Contact";
 import { useDispatch } from "react-redux";
 import { fetchProfileAction } from "features/authentication/action";
 import { AuthRoute, PrivateRoute } from "./Guard";
+import History from "features/booking/pages/History";
+import Loading from "common/components/Loading";
+import Profile from "features/authentication/pages/Profile";
 
 export const history = createBrowserHistory();
 
@@ -37,11 +40,14 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
+      <Loading />
       <Switch>
         <Route path="/" component={Home} exact />
         <Route path="/contact" component={Contact} />
         <Route path="/news" component={News} />
+        <Route path="/history" component={History} />
         <Route path="/detail/:id" component={Detail} />
+        <Route path="/profile" component={Profile} />
         <Route path="/booking" component={Booking} />
         {/* <Suspense fallback={<h1>Loadding ....</h1>}>
           <PaymentComponent path="/payment/:id" component={Payment} />
@@ -54,7 +60,6 @@ function App() {
 
         <AuthRoute path="/signin" component={Signin} redirectComp="/" />
         <AuthRoute path="/signup" component={Signup} redirectComp="/" />
-
         <Route path="/movies" component={MovieManagement} />
         <Route path="*" component={PageNotFound} />
       </Switch>

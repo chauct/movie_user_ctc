@@ -43,6 +43,7 @@
   color: #cecece;
   transition: all 0.5s;
   text-transform: uppercase;
+  cursor: pointer;
 }
 
 .header .menu .nav_link:hover {
@@ -124,6 +125,10 @@
   line-height: 23px;
   transition: all 0.5s;
   text-transform: uppercase;
+  cursor: pointer;
+}
+.color:hover {
+  color: #d00000;
 }
 
 /* css 2 button menu login */

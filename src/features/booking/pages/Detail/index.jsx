@@ -29,8 +29,6 @@ function Detail() {
 
   const dispatch = useDispatch();
 
-  const goToPayMent = () => {};
-
   const movieDetail = useSelector((state) => state.booking.moviesDetail);
 
   const movieId = match.params.id;

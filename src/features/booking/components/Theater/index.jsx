@@ -12,9 +12,9 @@ function Theater() {
 
   const [tabPosition, setTabPosition] = useState("left");
 
-  const changeTabPosition = (e) => {
-    setTabPosition(e.target.value);
-  };
+  // const changeTabPosition = (e) => {
+  //   setTabPosition(e.target.value);
+  // };
 
   const renderCinemaSystem = () => {
     return cinemaSystemInfo?.map((item) => {

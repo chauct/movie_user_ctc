@@ -1,4 +1,4 @@
-// import { formatDate } from "common/utils/date";
+import moment from "moment";
 import React from "react";
 import { useHistory } from "react-router-dom";
 import styles from "./style.module.css";
@@ -18,7 +18,11 @@ function MovieItem(props) {
       </div>
       <div className={styles.info}>
         <h2>{tenPhim}</h2>
-        <p>{ngayKhoiChieu}</p>
+        <p>
+          {moment(ngayKhoiChieu).format("DD.MM.YYYY") +
+            " ~ " +
+            moment(ngayKhoiChieu).format("HH:mm:ss")}
+        </p>
       </div>
       <div className={styles.btn}>
         <button className={styles.btn_shop}>mua vé</button>

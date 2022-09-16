@@ -1,11 +1,11 @@
-import { Col, Row } from "antd";
+import { Button, Col, Modal, Row } from "antd";
 import {
   DAT_GHE,
   fetchDanhSachPhongVeAction,
   fetchDatVeAction,
 } from "features/booking/action";
 import moment from "moment";
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useRouteMatch } from "react-router-dom";
 
@@ -30,11 +30,11 @@ function Payment() {
   const match = useRouteMatch();
 
   const scheduleId = match.params.id;
-  console.log({ scheduleId });
 
   const goToSignin = () => {
     history.push("/signin");
   };
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const fetchDanhSachPhongVe = async () => {
     dispatch(fetchDanhSachPhongVeAction(scheduleId));
@@ -216,10 +216,45 @@ function Payment() {
                   } else {
                     history.push("/signin");
                   }
+                  setIsModalVisible(true);
                 }}
               >
                 đặt vé
               </button>
+              {/* <Modal
+                title="Modal Title"
+                visible={isModalVisible}
+                onOK={() => {
+                  setIsModalVisible(true);
+                }}
+                onCancel={() => {
+                  setIsModalVisible(false);
+                }}
+              >
+                <p>{thongTinPhongVe.thongTinPhim?.tenPhim}</p>
+                <p>{thongTinPhongVe.thongTinPhim?.hinhAnh}</p>
+                <p>{thongTinPhongVe.thongTinPhim?.tenCumRap}</p>
+                <p>Địa chỉ: {thongTinPhongVe.thongTinPhim?.diaChi} </p>
+                <div>
+                  Ghế:
+                  {lodash
+                    .sortBy(danhSachGheDangDat, ["stt"])
+                    .map((gheDD, index) => {
+                      return (
+                        <span style={{ marginLeft: 10 }} key={index}>
+                          {gheDD.stt}
+                        </span>
+                      );
+                    })}
+                </div>
+                <button
+                  onClick={() => {
+                    history.push("/history");
+                  }}
+                >
+                  chau
+                </button>
+              </Modal> */}
             </div>
           </section>
         </Col>

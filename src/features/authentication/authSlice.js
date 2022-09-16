@@ -2,7 +2,7 @@ import { produce } from "immer";
 import { SIGN_IN_ACTION } from "./action";
 
 const initialState = {
-  profile: null,
+  profile: {},
 };
 
 const reducer = (state = initialState, action) => {

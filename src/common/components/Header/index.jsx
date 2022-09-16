@@ -5,6 +5,7 @@ import logoDark from "assets/img/Logo-dark.png";
 import { NavLink, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { SIGN_IN_ACTION } from "features/authentication/action";
+import { Button, Dropdown, Menu } from "antd";
 
 function Header() {
   const dispatch = useDispatch();
@@ -23,6 +24,14 @@ function Header() {
     history.push("/signin");
   };
 
+  const goToHistory = () => {
+    history.push("/history");
+  };
+
+  const goToProfile = () => {
+    history.push("/profile");
+  };
+
   const handleLogout = (e) => {
     e.preventDefault();
     localStorage.removeItem("token");
@@ -33,16 +42,33 @@ function Header() {
     goToHome();
   };
 
+  const menu = (
+    <Menu
+      items={[
+        {
+          key: "1",
+          label: <span onClick={goToHistory}>Lịch sử đặt vé</span>,
+        },
+        {
+          key: "2",
+          label: <span onClick={goToProfile}>Thông tin tài khoản</span>,
+        },
+        {
+          key: "3",
+          label: <span onClick={handleLogout}>Đăng xuất</span>,
+        },
+      ]}
+    />
+  );
   const renderUserInfo = () => {
     if (userProfile) {
       return (
         <div className={styles.menu}>
-          <a href="#" className={styles.nav_link}>
-            Hi, {userProfile.hoTen}
-          </a>
-          <button onClick={handleLogout} className={styles.logout} href="#">
-            Đăng xuất
-          </button>
+          <Dropdown overlay={menu} placement="bottom" arrow>
+            <span className={color ? `${styles.color} ` : `${styles.nav_link}`}>
+              Hi, {userProfile.hoTen}
+            </span>
+          </Dropdown>
         </div>
       );
     }
@@ -57,6 +83,7 @@ function Header() {
       </div>
     );
   };
+
   const changeBackgroundHeader = () => {
     if (window.scrollY >= 80) {
       setHeader(true);

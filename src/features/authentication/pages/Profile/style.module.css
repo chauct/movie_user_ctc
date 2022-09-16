@@ -1,0 +1,53 @@
+.profile {
+  padding: 100px 0;
+}
+.profile .title {
+  text-transform: uppercase;
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+  padding: 50px 0;
+}
+.left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.left img {
+  width: 70%;
+  height: 70%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+}
+.left p {
+  color: #000000;
+  font-size: 22px;
+  font-weight: 600;
+  padding-top: 30px;
+}
+
+/* right */
+.right div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.right .input {
+  margin-bottom: 10px;
+  width: 400px;
+  background-color: transparent;
+  margin-top: 18px;
+  padding: 8px 12px;
+  color: rgb(0, 0, 0);
+  font-size: 17px;
+  font-weight: 300;
+  text-align: left;
+  border-color: rgb(187, 187, 187);
+}
+.right .input:focus {
+  border-color: rgb(255, 255, 255);
+  box-shadow: none;
+  color: #fff;
+}

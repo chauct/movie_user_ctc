@@ -1,6 +1,6 @@
 import instance from "api/instance";
 import Swal from "sweetalert2";
-
+import { history } from "app/App";
 export const SET_CAROUSELS = "booking/SET_CAROUSELS";
 export const SET_MOVIES = "booking/SET_MOVIES";
 export const SET_PHIM_DANG_CHIEU = "booking/SET_PHIM_DANG_CHIEU";
@@ -134,7 +134,8 @@ export const fetchDatVeAction = (thongTinVe) => {
         type: DAT_VE_THANH_CONG,
       });
 
-      Swal.fire("Thông báo", "Đặt vé thành công!", "Success");
+      Swal.fire("Thông báo", "Đặt vé thành công!", "Success", "/history");
+
       console.log(res);
     } catch (error) {
       console.log("errors", error.response?.data);
