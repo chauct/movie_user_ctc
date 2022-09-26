@@ -13,6 +13,7 @@ import lodash from "lodash";
 
 import styles from "./style.module.css";
 import "./style.css";
+import Swal from "sweetalert2";
 
 function Payment() {
   const dispatch = useDispatch();
@@ -26,7 +27,7 @@ function Payment() {
   const danhSachGheDangDat = useSelector(
     (state) => state.booking.danhSachGheDangDat
   );
-
+  console.log({ danhSachGheDangDat });
   const match = useRouteMatch();
 
   const scheduleId = match.params.id;
@@ -180,12 +181,12 @@ function Payment() {
             <div className={styles.email}>
               <label>Email</label>
               <br />
-              {/* <input type="text" value={profile?.email} /> */}
+              <input type="text" value={profile?.email} />
             </div>
             <div className={styles.name}>
               <label>Họ tên</label>
               <br />
-              {/* <input type="text" value={profile.hoTen} /> */}
+              <input type="text" value={profile?.hoTen} />
             </div>
             <div className={styles.notice}>
               <i class="bx bxs-info-circle"></i>
@@ -198,63 +199,50 @@ function Payment() {
             <div className={styles.btn_checkout}>
               <button
                 onClick={() => {
-                  if (localStorage.getItem("user_login")) {
-                    // lấy ra user từ localStorage
-                    let userLogin = JSON.parse(
-                      localStorage.getItem("user_login")
-                    );
-
-                    // let object backend cần
-                    let objectDatVe = {
-                      maLichChieu: scheduleId,
-                      danhSachVe: danhSachGheDangDat,
-                      taiKhoanNguoiDung: userLogin.taiKhoan,
-                    };
-
-                    // dispatch gọi api
-                    dispatch(fetchDatVeAction(objectDatVe));
+                  if (danhSachGheDangDat.length === 0) {
+                    Swal.fire({
+                      title: "Bạn Chưa Chọn Ghế!",
+                      text: "Vui Lòng Chọn Ghế Trước Khi Đặt!",
+                      icon: "warning",
+                      confirmButtonColor: "#fb4226",
+                      confirmButtonText: "OK",
+                    });
                   } else {
-                    history.push("/signin");
+                    Swal.fire({
+                      title: "Bạn có chắc muốn đặt vé không!",
+                      icon: "question",
+                      showCancelButton: true,
+                      confirmButtonColor: "#fb4226",
+                      cancelButtonColor: "rgb(167 167 167)",
+                      confirmButtonText: "OK",
+                    }).then((result) => {
+                      if (result.isConfirmed) {
+                        if (localStorage.getItem("user_login")) {
+                          // lấy ra user từ localStorage
+                          let userLogin = JSON.parse(
+                            localStorage.getItem("user_login")
+                          );
+
+                          // let object backend cần
+                          let objectDatVe = {
+                            maLichChieu: scheduleId,
+                            danhSachVe: danhSachGheDangDat,
+                            taiKhoanNguoiDung: userLogin.taiKhoan,
+                          };
+
+                          // dispatch gọi api
+                          dispatch(fetchDatVeAction(objectDatVe));
+                        } else {
+                          history.push("/signin");
+                        }
+                      }
+                    });
                   }
                   setIsModalVisible(true);
                 }}
               >
                 đặt vé
               </button>
-              {/* <Modal
-                title="Modal Title"
-                visible={isModalVisible}
-                onOK={() => {
-                  setIsModalVisible(true);
-                }}
-                onCancel={() => {
-                  setIsModalVisible(false);
-                }}
-              >
-                <p>{thongTinPhongVe.thongTinPhim?.tenPhim}</p>
-                <p>{thongTinPhongVe.thongTinPhim?.hinhAnh}</p>
-                <p>{thongTinPhongVe.thongTinPhim?.tenCumRap}</p>
-                <p>Địa chỉ: {thongTinPhongVe.thongTinPhim?.diaChi} </p>
-                <div>
-                  Ghế:
-                  {lodash
-                    .sortBy(danhSachGheDangDat, ["stt"])
-                    .map((gheDD, index) => {
-                      return (
-                        <span style={{ marginLeft: 10 }} key={index}>
-                          {gheDD.stt}
-                        </span>
-                      );
-                    })}
-                </div>
-                <button
-                  onClick={() => {
-                    history.push("/history");
-                  }}
-                >
-                  chau
-                </button>
-              </Modal> */}
             </div>
           </section>
         </Col>

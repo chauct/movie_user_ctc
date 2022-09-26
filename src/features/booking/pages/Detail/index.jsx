@@ -5,12 +5,13 @@ import "@tsamantanis/react-glassmorphism/dist/index.css";
 
 import "./style.css";
 
-import { Tabs, Row, Col, Rate, Button } from "antd";
+import { Tabs, Row, Col, Rate, Button, Modal } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMoviesDetailAction } from "features/booking/action";
 import { useHistory, useRouteMatch } from "react-router-dom";
 
 import moment from "moment";
+import Swal from "sweetalert2";
 
 const { TabPane } = Tabs;
 
@@ -30,6 +31,8 @@ function Detail() {
   const dispatch = useDispatch();
 
   const movieDetail = useSelector((state) => state.booking.moviesDetail);
+
+  console.log({ movieDetail });
 
   const movieId = match.params.id;
 
@@ -51,6 +54,15 @@ function Detail() {
     fetchMoviesDetail();
   }, []);
 
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [urlVideo, setUrlVideo] = useState();
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
   return (
     <div
       style={{
@@ -71,21 +83,56 @@ function Detail() {
         <div className="container">
           <Row className={styles.padding}>
             <Col sx={24} sm={12} md={8} lg={8}>
-              <img
-                className={styles.img}
-                src={movieDetail.hinhAnh}
-                alt={movieDetail.tenPhim}
-                width={350}
-                height={525}
-              />
+              <div className={styles.img}>
+                <img
+                  onClick={() => {
+                    setIsModalVisible(true);
+                    setUrlVideo(movieDetail?.trailer);
+                  }}
+                  src={movieDetail.hinhAnh}
+                  alt={movieDetail.tenPhim}
+                  width={350}
+                  height={525}
+                />
+              </div>
+              <div
+                onClick={() => {
+                  setIsModalVisible(true);
+                  setUrlVideo(movieDetail?.trailer);
+                }}
+                className={styles.icon_play}
+              >
+                <img
+                  src="https://cinerama.qodeinteractive.com/wp-content/plugins/cinerama-core/assets/img/play.svg"
+                  alt=""
+                />
+              </div>
+              <Modal
+                visible={isModalVisible}
+                footer
+                onOk={handleOk}
+                onCancel={handleCancel}
+                className={styles.modal_trailer}
+              >
+                <iframe
+                  width="500px"
+                  height="300px"
+                  src={urlVideo}
+                  title={movieDetail.tenPhim}
+                  frameBorder={0}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </Modal>
             </Col>
             <Col sx={24} sm={16} md={16} lg={16}>
               <div className={styles.info_movie}>
                 <h2>{movieDetail.tenPhim}</h2>
                 <p>{movieDetail.moTa}</p>
+
                 <div className={styles.flex}>
                   <div>
-                    <p>
+                    <p style={{ marginBottom: 30, display: "block" }}>
                       Ngày khởi chiếu:
                       <span className={styles.text_date}>
                         {moment(movieDetail.ngayKhoiChieu).format(
@@ -157,11 +204,18 @@ function Detail() {
                               return (
                                 <Col key={lichChieuPhim.maLichChieu} span={6}>
                                   <Button
-                                    onClick={() =>
-                                      history.push(
+                                    onClick={() => {
+                                      if (!localStorage.getItem("token")) {
+                                        Swal.fire(
+                                          "Thông báo",
+                                          "Bạn chưa đăng nhập!",
+                                          "Error"
+                                        );
+                                      }
+                                      return history.push(
                                         `/payment/${lichChieuPhim.maLichChieu}`
-                                      )
-                                    }
+                                      );
+                                    }}
                                     className={styles.btn_date}
                                   >
                                     {moment(

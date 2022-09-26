@@ -1,6 +1,7 @@
 import instance from "api/instance";
 import Swal from "sweetalert2";
 import { history } from "app/App";
+import { Redirect } from "react-router-dom";
 export const SET_CAROUSELS = "booking/SET_CAROUSELS";
 export const SET_MOVIES = "booking/SET_MOVIES";
 export const SET_PHIM_DANG_CHIEU = "booking/SET_PHIM_DANG_CHIEU";
@@ -133,13 +134,24 @@ export const fetchDatVeAction = (thongTinVe) => {
       dispatch({
         type: DAT_VE_THANH_CONG,
       });
-
-      Swal.fire("Thông báo", "Đặt vé thành công!", "Success", "/history");
+      Swal.fire({
+        title: "Notification",
+        text: res.data.content,
+        icon: "success",
+        confirmButtonColor: "#1c7403",
+      }).then((res) => {
+        if (res.isConfirmed) {
+          history.push("/");
+        }
+      });
 
       console.log(res);
     } catch (error) {
-      console.log("errors", error.response?.data);
-      Swal.fire("Thông báo", "Đặt vé thất bại!", "Error");
+      Swal.fire({
+        title: "Đặt Vé Thất Bại!",
+        text: error.response?.data.content,
+        icon: "error",
+      });
     }
   };
 };

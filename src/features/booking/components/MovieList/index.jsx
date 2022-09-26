@@ -53,9 +53,36 @@ function MovieList() {
     centerPadding: "60px",
     slidesToShow: 4,
     speed: 500,
+    slidesToScroll: 4,
     rows: 2,
-    // slidesPerRow: 2,
     variableWidth: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          rows: 2,
+          slidesToShow: 2,
+          slidesPerRow: 2,
+        },
+      },
+      {
+        breakpoint: 900,
+        settings: {
+          rows: 2,
+          slidesToShow: 1,
+          slidesPerRow: 3,
+        },
+      },
+      {
+        breakpoint: 576,
+        settings: {
+          rows: 1,
+          slidesToShow: 1,
+          slidesPerRow: 1,
+          rows: 1,
+        },
+      },
+    ],
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
   };

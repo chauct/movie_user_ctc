@@ -1,5 +1,6 @@
 import instance from "api/instance";
 import { history } from "app/App";
+import Swal from "sweetalert2";
 
 export const SIGN_IN_ACTION = "auth/SIGN_IN_ACTION";
 
@@ -20,8 +21,15 @@ export const fetchSigninAction = (user) => {
         type: SIGN_IN_ACTION,
         payload: profile,
       });
-
-      history.goBack();
+      Swal.fire({
+        title: "Đăng nhập thành công!",
+        icon: "success",
+        confirmButtonColor: "#1c7403",
+      }).then((res) => {
+        if (res.isConfirmed) {
+          history.goBack();
+        }
+      });
 
       console.log(res);
     } catch (error) {

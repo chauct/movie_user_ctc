@@ -7,6 +7,7 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import instance from "api/instance";
 import { useHistory } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const schema = yup.object().shape({
   taiKhoan: yup
@@ -63,9 +64,16 @@ function Signup() {
         method: "POST",
         data: user,
       });
-
+      Swal.fire({
+        title: "Đăng kí thành công!",
+        icon: "success",
+        confirmButtonColor: "#1c7403",
+      }).then((res) => {
+        if (res.isConfirmed) {
+          history.push("/signin");
+        }
+      });
       console.log(res.data);
-      history.push("/signin");
     } catch (error) {
       console.log({ error });
     } finally {
