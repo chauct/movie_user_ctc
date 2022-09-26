@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Table } from "antd";
+import { Button, Table } from "antd";
 import styles from "./style.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProfileAction } from "features/authentication/action";
@@ -57,7 +57,7 @@ function History() {
       title: "Tên phim",
       dataIndex: "tenPhim",
       render: (text) => {
-        return <span>{text}</span>;
+        return <h3 className={styles.tenPhim}>{text}</h3>;
       },
       sorter: (a, b) => a.tenPhim - b.tenPhim,
       sortDirections: ["descend"],
@@ -85,7 +85,7 @@ function History() {
         return (
           <>
             {item.danhSachGhe?.map((g) => {
-              return <span className={styles.tenGhe}>{g.tenGhe} </span>;
+              return <button className={styles.tenGhe}>{g.tenGhe} </button>;
             })}
           </>
         );

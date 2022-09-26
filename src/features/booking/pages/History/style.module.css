@@ -12,6 +12,16 @@
   display: flex;
   border-bottom: 1px solid red;
 }
+.tenPhim {
+  font-size: 18px;
+  font-weight: 600;
+}
 .tenGhe {
-  padding-left: 15px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 3px;
+  width: 30px;
+  height: 30px;
 }

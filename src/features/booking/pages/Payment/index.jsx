@@ -1,11 +1,11 @@
-import { Button, Col, Modal, Row } from "antd";
+import { Col, Row } from "antd";
 import {
   DAT_GHE,
   fetchDanhSachPhongVeAction,
   fetchDatVeAction,
 } from "features/booking/action";
-import moment from "moment";
-import React, { Fragment, useEffect, useState } from "react";
+
+import React, { Fragment, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useRouteMatch } from "react-router-dom";
 
@@ -14,6 +14,7 @@ import lodash from "lodash";
 import styles from "./style.module.css";
 import "./style.css";
 import Swal from "sweetalert2";
+import CountdownTimer from "features/booking/components/CountdownTimer";
 
 function Payment() {
   const dispatch = useDispatch();
@@ -32,11 +33,6 @@ function Payment() {
 
   const scheduleId = match.params.id;
 
-  const goToSignin = () => {
-    history.push("/signin");
-  };
-  const [isModalVisible, setIsModalVisible] = useState(false);
-
   const fetchDanhSachPhongVe = async () => {
     dispatch(fetchDanhSachPhongVeAction(scheduleId));
   };
@@ -44,6 +40,35 @@ function Payment() {
   useEffect(() => {
     fetchDanhSachPhongVe();
   }, []);
+
+  // set timeout
+  // const [minutes, setMinutes] = useState(5);
+  // const [seconds, setSeconds] = useState(0);
+  // const [isModalVisible, setIsModalVisible] = useState(false);
+  // const showModal = () => {
+  //   setIsModalVisible(true);
+  // };
+  // let myInterval = useRef();
+  // const startTime = () => {
+  //   myInterval = setInterval(() => {
+  //     if (seconds > 0) {
+  //       setSeconds(seconds - 1);
+  //     }
+  //     if (seconds === 0) {
+  //       if (minutes === 0) {
+  //         showModal();
+  //       } else {
+  //         setMinutes(minutes - 1);
+  //         setSeconds(59);
+  //       }
+  //     }
+  //   }, 1000);
+  // };
+  // ---------------------------------------
+  const THREE_DAYS_IN_MS = 5 * 60 * 1000;
+  const NOW_IN_MS = new Date().getTime();
+
+  const dateTimeAfterThreeDays = NOW_IN_MS + THREE_DAYS_IN_MS;
 
   const renderSeat = () => {
     return thongTinPhongVe.danhSachGhe?.map((item, index) => {
@@ -104,7 +129,7 @@ function Payment() {
               </div>
               <div className={styles.rightTitle}>
                 <p>Thời gian giữ ghế </p>
-                <p>00:0</p>
+                <CountdownTimer targetDate={dateTimeAfterThreeDays} />
               </div>
             </div>
             <div className={styles.screen}></div>
@@ -192,8 +217,8 @@ function Payment() {
               <i class="bx bxs-info-circle"></i>
               <span>
                 Vé đã mua không thể đổi hoặc hoàn tiền.
-                <br /> Mã vé sẽ được gửi qua tin nhắn <a>SMS</a>(tin nhắn Zalo)
-                và <a>Email</a> đã đăng nhập
+                <br /> Mã vé sẽ được gửi qua tin nhắn <a href="#">SMS</a>(tin
+                nhắn Zalo) và <a href="#">Email</a> đã đăng nhập
               </span>
             </div>
             <div className={styles.btn_checkout}>
@@ -238,7 +263,6 @@ function Payment() {
                       }
                     });
                   }
-                  setIsModalVisible(true);
                 }}
               >
                 đặt vé
