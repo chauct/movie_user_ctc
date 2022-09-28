@@ -21,10 +21,13 @@
   font-size: 15px;
   font-weight: 400;
 }
-
+.topContent .rightTitle {
+  padding-bottom: 20px;
+}
 .topContent .rightTitle p:last-of-type {
   color: #dd3333;
-  font-size: 35px;
+  font-size: 18px;
+
   font-weight: 600;
 }
 .screen {

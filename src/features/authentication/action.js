@@ -30,10 +30,12 @@ export const fetchSigninAction = (user) => {
           history.goBack();
         }
       });
-
-      console.log(res);
     } catch (error) {
-      console.log("error", error.response.data);
+      Swal.fire({
+        title: error.response.data.content,
+        icon: "error",
+        confirmButtonColor: "#d00000",
+      });
     }
   };
 };

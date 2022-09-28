@@ -251,7 +251,6 @@ function Detail() {
               </span>
             </div>
           )}
-          {/* </Row> */}
         </div>
       </CustomCard>
     </div>

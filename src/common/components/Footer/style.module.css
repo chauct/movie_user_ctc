@@ -103,3 +103,18 @@
   font-weight: 300;
   margin: 0;
 }
+.backToTop {
+  color: #000;
+  -webkit-box-shadow: 0px 0px 12px -1px rgba(0, 0, 0, 0.9);
+  box-shadow: 0px 0px 12px -1px rgba(0, 0, 0, 0.9);
+}
+@media screen and (max-width: 768px) {
+  .partner .icon img {
+    width: 60px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .partner .icon img {
+    width: 55px;
+  }
+}

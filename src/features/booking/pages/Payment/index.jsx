@@ -41,30 +41,6 @@ function Payment() {
     fetchDanhSachPhongVe();
   }, []);
 
-  // set timeout
-  // const [minutes, setMinutes] = useState(5);
-  // const [seconds, setSeconds] = useState(0);
-  // const [isModalVisible, setIsModalVisible] = useState(false);
-  // const showModal = () => {
-  //   setIsModalVisible(true);
-  // };
-  // let myInterval = useRef();
-  // const startTime = () => {
-  //   myInterval = setInterval(() => {
-  //     if (seconds > 0) {
-  //       setSeconds(seconds - 1);
-  //     }
-  //     if (seconds === 0) {
-  //       if (minutes === 0) {
-  //         showModal();
-  //       } else {
-  //         setMinutes(minutes - 1);
-  //         setSeconds(59);
-  //       }
-  //     }
-  //   }, 1000);
-  // };
-  // ---------------------------------------
   const THREE_DAYS_IN_MS = 5 * 60 * 1000;
   const NOW_IN_MS = new Date().getTime();
 

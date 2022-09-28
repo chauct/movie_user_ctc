@@ -73,9 +73,12 @@ function Signup() {
           history.push("/signin");
         }
       });
-      console.log(res.data);
     } catch (error) {
-      console.log({ error });
+      Swal.fire({
+        title: error.response.data.content,
+        icon: "error",
+        confirmButtonColor: "#d00000",
+      });
     } finally {
       setIsLoading(false);
     }

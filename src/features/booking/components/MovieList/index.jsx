@@ -33,7 +33,7 @@ function MovieList() {
     const { className, style, onClick } = props;
     return (
       <div
-        className={`${className} ${styles["slick-prev "]}`}
+        className={`${className} ${styles["slick-prev"]}`}
         style={{ ...style, display: "block" }}
         onClick={onClick}
       />

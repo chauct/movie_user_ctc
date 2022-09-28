@@ -5,7 +5,7 @@ import logoDark from "assets/img/Logo-dark.png";
 import { NavLink, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { SIGN_IN_ACTION } from "features/authentication/action";
-import { Button, Dropdown, Menu } from "antd";
+import { Dropdown, Menu } from "antd";
 
 function Header() {
   const dispatch = useDispatch();
@@ -15,6 +15,8 @@ function Header() {
   const [color, setColor] = useState(false);
   const [navbarLogo, setNavbarLogo] = useState(logo);
   const history = useHistory();
+
+  const [isMobile, setIsMobile] = useState(false);
 
   const goToHome = () => {
     history.push("/");
@@ -60,20 +62,21 @@ function Header() {
       ]}
     />
   );
+
   const renderUserInfo = () => {
     if (userProfile) {
       return (
-        <div className={styles.menu}>
-          <Dropdown overlay={menu} placement="bottom" arrow>
-            <span className={color ? `${styles.color} ` : `${styles.nav_link}`}>
-              Hi, {userProfile.hoTen}
-            </span>
-          </Dropdown>
-        </div>
+        <Dropdown overlay={menu} placement="bottom" arrow>
+          <span className={color ? `${styles.color} ` : `${styles.nav_link}`}>
+            Hi, {userProfile.hoTen}
+          </span>
+        </Dropdown>
       );
     }
     return (
-      <div className={styles.login}>
+      <div
+        className={isMobile ? `${styles.nav_link_toggle}` : `${styles.login}`}
+      >
         <button
           onClick={goToSignin}
           className={color ? `${styles.btn_dark} ` : `${styles.btn_login}`}
@@ -114,58 +117,90 @@ function Header() {
   });
 
   return (
-    <div
-      className={
-        header ? `${styles.active} ${styles.header}` : `${styles.header}`
-      }
-    >
-      <div className="container">
-        <div className={styles.nav}>
-          <span onClick={goToHome} className={styles.logo}>
-            <img src={navbarLogo} alt="logo" />
-          </span>
-          <div className={styles.menu}>
-            <ul className="menu_list">
-              <li>
-                <NavLink
-                  to="/"
-                  className={color ? `${styles.color} ` : `${styles.nav_link}`}
-                >
-                  Lịch chiếu
-                </NavLink>
-              </li>
+    <>
+      <div
+        className={
+          header ? `${styles.active} ${styles.header}   ` : `${styles.header}`
+        }
+      >
+        <div className="container">
+          <div className={styles.nav}>
+            <span onClick={goToHome} className={styles.logo}>
+              <img src={navbarLogo} alt="logo" />
+            </span>
+            <div
+              className={
+                isMobile ? `${styles.nav_link_toggle}` : `${styles.menu}`
+              }
+              onClick={() => {
+                setIsMobile(false);
+              }}
+            >
+              <ul className={styles.menu_list}>
+                <li>
+                  <NavLink
+                    to="/"
+                    className={
+                      color ? `${styles.color} ` : `${styles.nav_link}`
+                    }
+                  >
+                    Lịch chiếu
+                  </NavLink>
+                </li>
 
-              <li>
-                <NavLink
-                  to="/theater"
-                  className={color ? `${styles.color} ` : `${styles.nav_link}`}
-                >
-                  Cụm rạp
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/news"
-                  className={color ? `${styles.color} ` : `${styles.nav_link}`}
-                >
-                  Tin tức
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/detail/:id"
-                  className={color ? `${styles.color} ` : `${styles.nav_link}`}
-                >
-                  Ứng dụng
-                </NavLink>
-              </li>
-            </ul>
+                <li>
+                  <NavLink
+                    to="/theater"
+                    className={
+                      color ? `${styles.color} ` : `${styles.nav_link}`
+                    }
+                  >
+                    Cụm rạp
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/news"
+                    className={
+                      color ? `${styles.color} ` : `${styles.nav_link}`
+                    }
+                  >
+                    Tin tức
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/detail/:id"
+                    className={
+                      color ? `${styles.color} ` : `${styles.nav_link}`
+                    }
+                  >
+                    Ứng dụng
+                  </NavLink>
+                </li>
+              </ul>
+            </div>
+            {renderUserInfo()}
+            <button
+              className={
+                color
+                  ? `${styles.toggle_dark} ${styles.toggle} `
+                  : `${styles.toggle}`
+              }
+              onClick={() => {
+                setIsMobile(!isMobile);
+              }}
+            >
+              {isMobile ? (
+                <i class="fa-solid fa-x"></i>
+              ) : (
+                <i class="fa-solid fa-bars"></i>
+              )}
+            </button>
           </div>
-
-          {renderUserInfo()}
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

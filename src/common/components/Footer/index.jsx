@@ -3,6 +3,7 @@ import styles from "./style.module.css";
 import { Col, Row } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchFooterAction } from "features/booking/action";
+import ScrollToTop from "react-scroll-to-top";
 
 function Footer() {
   const footerInfo = useSelector((state) => state.booking.footer);
@@ -19,6 +20,7 @@ function Footer() {
 
   return (
     <>
+      <ScrollToTop smooth top={20} className={styles.backToTop} />;
       <div className={styles.partner}>
         <div className="container">
           <div className={styles.flex}>
@@ -32,7 +34,6 @@ function Footer() {
           </div>
         </div>
       </div>
-
       <div className={styles.footer}>
         <div className="container">
           <Row gutter={[24, 24]}>
@@ -121,7 +122,6 @@ function Footer() {
           </Row>
         </div>
       </div>
-
       <div class={styles.coppy_right}>
         <p>© 2022 Qode Interactive, All Rights Reserved</p>
       </div>
