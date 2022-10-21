@@ -41,6 +41,7 @@ const reducer = (state = initialState, action) => {
       });
       return nextState;
     }
+
     //  dots: true,
     // infinite: true,
     // slidesToShow: 4,

@@ -73,6 +73,7 @@ function Signup() {
           history.push("/signin");
         }
       });
+      console.log(res);
     } catch (error) {
       Swal.fire({
         title: error.response.data.content,

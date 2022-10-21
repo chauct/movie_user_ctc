@@ -9,6 +9,7 @@ import {
   fetchCinemaSystemAction,
   fetchMoviesAction,
 } from "features/booking/action";
+import axios from "axios";
 
 function Home() {
   const dispatch = useDispatch();
