@@ -10,11 +10,31 @@
   transition: all 0.5s;
   /* position: relative; */
 }
+
+/* scroll */
 .header.active {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
   background-color: #fff;
   color: #000;
 }
+.header.active .nav_link {
+  color: #000;
+}
+
+.header.active .nav_link:hover {
+  color: rgb(198, 0, 0);
+}
+
+.header.active .btn_login {
+  color: #000;
+  border: 2px solid #000;
+}
+
+.header.active .btn_login::after {
+  background: #000000;
+}
+
+/* end scroll */
 
 .header .nav {
   display: flex;
@@ -31,10 +51,8 @@
   align-items: center;
   margin: 0;
 }
-.header .menu .menu_list li {
-  color: #cecece;
-}
-.header .menu .nav_link {
+
+.header .nav_link {
   display: block;
   margin-right: 25px;
   font-size: 12px;
@@ -47,11 +65,11 @@
   cursor: pointer;
 }
 
-.header .menu .nav_link:hover {
+.header .nav_link:hover {
   color: #fff;
 }
 
-.header .login .btn_login {
+.header .btn_login {
   position: relative;
   text-transform: uppercase;
   outline: 0;
@@ -68,25 +86,8 @@
   transition: top 0.3s ease 0.4s, opacity 0.3s ease 0.4s;
   margin-right: 20px;
 }
-/* dark */
-.header .btn_dark {
-  position: relative;
-  text-transform: uppercase;
-  outline: 0;
-  font-size: 12px;
-  line-height: 1.2em;
-  letter-spacing: 0.35em;
-  font-weight: 700;
-  background-color: transparent;
-  padding: 16px 24px 14px;
-  cursor: pointer;
-  z-index: 3;
-  transition: top 0.3s ease 0.4s, opacity 0.3s ease 0.4s;
-  margin-right: 20px;
-  color: #000;
-  border: 2px solid #000;
-}
-.header .login .btn_login::after {
+
+.header .btn_login::after {
   content: "";
   display: block;
   position: absolute;
@@ -99,37 +100,9 @@
   -o-transition: width 0.35s ease;
   transition: width 0.35s ease;
 }
-/* dark */
-.header .login .btn_dark::after {
-  content: "";
-  display: block;
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  width: 0;
-  height: 4px;
-  background: #000000;
-  -webkit-transition: width 0.35s ease;
-  -o-transition: width 0.35s ease;
-  transition: width 0.35s ease;
-}
-.header .login button:hover::after {
+
+.header button:hover::after {
   width: 100%;
-}
-.color {
-  color: #000;
-  display: block;
-  margin-right: 25px;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  line-height: 23px;
-  transition: all 0.5s;
-  text-transform: uppercase;
-  cursor: pointer;
-}
-.color:hover {
-  color: #d00000;
 }
 
 /* css 2 button menu login */
@@ -166,9 +139,12 @@
   color: #fff;
   border: 2px solid #fff;
 }
-.toggle {
+
+/* mobile */
+.header .toggle {
   display: none;
 }
+
 @media screen and (max-width: 1200px) {
 }
 
@@ -186,28 +162,40 @@
 }
 
 @media screen and (max-width: 768px) {
+  .header {
+    box-shadow: none;
+    height: 90px;
+  }
+
+  .header .logo {
+    margin-left: -60px;
+  }
+
   .header .menu {
     display: none;
   }
-  .nav_link_toggle {
+
+  .header .nav_link_toggle {
     position: absolute;
     display: block;
     background-color: rgba(0, 0, 0, 0.5);
     list-style: none;
     left: 0;
-    top: 75px;
+    top: 90px;
     transition: all 0.5s;
     width: 100%;
+    padding: 15px;
   }
-  .nav_link_toggle_dark {
+  .header.active .nav_link_toggle {
     background-color: #fff;
+    box-shadow: 0px 4px 5px -3px rgba(0, 0, 0, 0.626);
   }
   .header .menu_list li {
-    padding: 15px;
+    padding: 20px;
     width: 100%;
     text-align: center;
   }
-  .toggle {
+  .header .toggle {
     display: block;
     position: absolute;
     font-size: 25px;
@@ -217,12 +205,17 @@
     top: 20px;
     right: 20px;
   }
+  .header.active .toggle {
+    color: #000;
+  }
   .header .nav_link {
     padding-right: 30px;
   }
-  .toggle_dark {
-    color: #000;
+
+  .header .btn_login {
+    margin-right: -50px;
   }
 }
+
 @media screen and (max-width: 576px) {
 }
