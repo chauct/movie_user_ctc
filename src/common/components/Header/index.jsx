@@ -128,7 +128,7 @@ function Header() {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/detail/:id" className={styles.nav_link}>
+                  <NavLink to="/apps" className={styles.nav_link}>
                     Ứng dụng
                   </NavLink>
                 </li>
