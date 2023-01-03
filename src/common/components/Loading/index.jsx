@@ -10,10 +10,6 @@ function Loading() {
     <>
       {isLoading ? (
         <div className={styles.wrapper}>
-          {/* <h1 className="brand">
-        <span>Linked</span>
-        <span>in</span>
-      </h1> */}
           <img src={logoDark} alt="" />
           <div className={styles.loading_bar} />
         </div>

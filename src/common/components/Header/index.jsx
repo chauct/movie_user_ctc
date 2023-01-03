@@ -100,6 +100,7 @@ function Header() {
           <div className={styles.nav}>
             <span onClick={goToHome} className={styles.logo}>
               <img src={navbarLogo} alt="logo" />
+              <>ch</>
             </span>
 
             <div
