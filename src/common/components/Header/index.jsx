@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./style.module.css";
 import logoLight from "assets/img/Logo-light.png";
 import logoDark from "assets/img/Logo-dark.png";
@@ -100,7 +100,6 @@ function Header() {
           <div className={styles.nav}>
             <span onClick={goToHome} className={styles.logo}>
               <img src={navbarLogo} alt="logo" />
-              <>ch</>
             </span>
 
             <div
