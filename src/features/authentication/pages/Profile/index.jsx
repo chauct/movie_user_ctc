@@ -13,7 +13,7 @@ function Profile() {
         <Row>
           <Col span={8}>
             <div className={styles.left}>
-              <img src="https://joeschmoe.io/api/v1/random" alt="" />
+              <img src="https://randomuser.me/photos" alt="" />
               <p>{profile.hoTen}</p>
             </div>
           </Col>

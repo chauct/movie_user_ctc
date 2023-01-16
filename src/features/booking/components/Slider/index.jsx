@@ -61,9 +61,6 @@ function Slider() {
           />
         </div>
       </Carousel>
-      {/* <Row>
-        <SelectTicket />
-      </Row> */}
     </>
   );
 }
