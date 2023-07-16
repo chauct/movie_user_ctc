@@ -1,11 +1,11 @@
-import { Button, Form, Row, Select } from "antd";
-import instance from "api/instance";
+import { Button, Form, Row, Select } from 'antd';
+import instance from 'api/instance';
 
-import moment from "moment";
-import React, { useEffect, useState } from "react";
+import moment from 'moment';
+import React, { useEffect, useState } from 'react';
 
-import { useHistory, useRouteMatch } from "react-router-dom";
-import styles from "./style.module.css";
+import { useHistory, useRouteMatch } from 'react-router-dom';
+import styles from './style.module.css';
 const { Option } = Select;
 function SelectTicket() {
   //   const formik = useFormik({
@@ -33,7 +33,7 @@ function SelectTicket() {
   const match = useRouteMatch();
 
   const scheduleId = match.params.id;
-  console.log("chau", scheduleId);
+  console.log('chau', scheduleId);
   const [state, setState] = useState({
     list: [],
     htRap: [],
@@ -42,10 +42,10 @@ function SelectTicket() {
   const fetchMoviesAction = async () => {
     try {
       const res = await instance.request({
-        url: "/api/QuanLyPhim/LayDanhSachPhim",
-        method: "GET",
+        url: '/api/QuanLyPhim/LayDanhSachPhim',
+        method: 'GET',
         params: {
-          maNhom: "GP07",
+          maNhom: 'GP09',
         },
       });
 
@@ -54,7 +54,7 @@ function SelectTicket() {
         list: res.data.content,
       });
     } catch (err) {
-      console.log("errors", err.response?.data.content);
+      console.log('errors', err.response?.data.content);
     }
   };
   useEffect(() => {
@@ -76,8 +76,8 @@ function SelectTicket() {
     // từ ht rạp call api lấy thông tin rap
     try {
       const res = await instance.request({
-        url: "/api/QuanLyRap/LayThongTinLichChieuPhim",
-        method: "GET",
+        url: '/api/QuanLyRap/LayThongTinLichChieuPhim',
+        method: 'GET',
         params: {
           MaPhim: value,
         },
@@ -87,30 +87,30 @@ function SelectTicket() {
         ...state,
         htRap: res.data.content,
       });
-      console.log(res, "fhhfh");
+      console.log(res, 'fhhfh');
     } catch (err) {
-      console.log("errors", err.response?.data.content);
+      console.log('errors', err.response?.data.content);
     }
   };
 
   const onFinish = (values) => {
-    console.log("Success:", values);
+    console.log('Success:', values);
   };
 
   const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+    console.log('Failed:', errorInfo);
   };
 
   return (
     <div>
       <Form
-        name="basic"
+        name='basic'
         initialValues={{
           remember: true,
         }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
-        autoComplete="off"
+        autoComplete='off'
         // onSubmitCapture={formik.handleSubmit}
       >
         <Row>
@@ -121,11 +121,11 @@ function SelectTicket() {
                 value: item.maPhim,
               }))}
               onChange={fetchMoviesDetailAction}
-              placeholder="Chọn tên phim "
+              placeholder='Chọn tên phim '
             />
           </Form.Item>
           <Form.Item>
-            <Select placeholder="Chọn rạp">
+            <Select placeholder='Chọn rạp'>
               {state.htRap.heThongRapChieu?.map((item, index) => {
                 return item.cumRapChieu.map((cr) => {
                   return <Option value={cr.maCumRap}>{cr.tenCumRap}</Option>;
@@ -134,21 +134,20 @@ function SelectTicket() {
             </Select>
           </Form.Item>
           <Form.Item>
-            <Select placeholder="Chọn ngày giờ chiếu">
+            <Select placeholder='Chọn ngày giờ chiếu'>
               {state.htRap.heThongRapChieu?.map((item, index) => {
                 return item.cumRapChieu?.map((cr) => {
                   return cr.lichChieuPhim?.map((lc) => {
                     return (
                       <Option
                         value={
-                          moment(lc.ngayChieuGioChieu).format("DD/MM/YYYY ") +
-                          "~ " +
-                          moment(lc.ngayChieuGioChieu).format("hh:mm:ss")
-                        }
-                      >
-                        {moment(lc.ngayChieuGioChieu).format("DD/MM/YYYY ") +
-                          "~ " +
-                          moment(lc.ngayChieuGioChieu).format("hh:mm:ss")}
+                          moment(lc.ngayChieuGioChieu).format('DD/MM/YYYY ') +
+                          '~ ' +
+                          moment(lc.ngayChieuGioChieu).format('hh:mm:ss')
+                        }>
+                        {moment(lc.ngayChieuGioChieu).format('DD/MM/YYYY ') +
+                          '~ ' +
+                          moment(lc.ngayChieuGioChieu).format('hh:mm:ss')}
                       </Option>
                     );
                   });
@@ -160,8 +159,7 @@ function SelectTicket() {
             wrapperCol={{
               offset: 8,
               span: 16,
-            }}
-          >
+            }}>
             {state.htRap.heThongRapChieu?.map((item) => {
               return item.cumRapChieu.map((cr) => {
                 return cr.lichChieuPhim.map((lc) => {
@@ -169,9 +167,8 @@ function SelectTicket() {
                     <Button
                       onClick={() => history.push(`/payment/${lc.maLichChieu}`)}
                       danger
-                      htmlType="submit"
-                      className={styles.btn_submit}
-                    >
+                      htmlType='submit'
+                      className={styles.btn_submit}>
                       Mua vé ngay
                     </Button>
                   );

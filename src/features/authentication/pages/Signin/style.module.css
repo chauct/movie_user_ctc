@@ -51,10 +51,10 @@
   font-size: 17px;
   font-weight: 300;
   text-align: left;
-  border-color: rgb(255, 255, 255);
+  border-color: #ffffff;
 }
 .signin .input:focus {
-  border-color: rgb(255, 0, 0);
+  border-color: #ff0000;
   box-shadow: none;
   color: #fff;
 }

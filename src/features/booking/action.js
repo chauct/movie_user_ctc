@@ -1,23 +1,23 @@
-import instance from "api/instance";
-import Swal from "sweetalert2";
-import { history } from "app/App";
-export const SET_CAROUSELS = "booking/SET_CAROUSELS";
-export const SET_MOVIES = "booking/SET_MOVIES";
-export const SET_PHIM_DANG_CHIEU = "booking/SET_PHIM_DANG_CHIEU";
-export const SET_PHIM_SAP_CHIEU = "booking/SET_PHIM_SAP_CHIEU";
-export const SET_CINEMA_SYSTEM = "booking/SET_CINEMA_SYSTEM";
-export const SET_FOOTER = "booking/SET_FOOTER";
-export const SET_MOVIES_DETAIL = "booking/SET_MOVIES_DETAIL";
-export const THONG_TIN_PHONG_VE = "booking/THONG_TIN_PHONG_VE";
-export const DAT_GHE = "booking/DAT_GHE";
-export const DAT_VE = "booking/DAT_VE";
-export const DAT_VE_THANH_CONG = "booking/DAT_VE_THANH_CONG";
+import instance from 'api/instance';
+import Swal from 'sweetalert2';
+import { history } from 'app/App';
+export const SET_CAROUSELS = 'booking/SET_CAROUSELS';
+export const SET_MOVIES = 'booking/SET_MOVIES';
+export const SET_PHIM_DANG_CHIEU = 'booking/SET_PHIM_DANG_CHIEU';
+export const SET_PHIM_SAP_CHIEU = 'booking/SET_PHIM_SAP_CHIEU';
+export const SET_CINEMA_SYSTEM = 'booking/SET_CINEMA_SYSTEM';
+export const SET_FOOTER = 'booking/SET_FOOTER';
+export const SET_MOVIES_DETAIL = 'booking/SET_MOVIES_DETAIL';
+export const THONG_TIN_PHONG_VE = 'booking/THONG_TIN_PHONG_VE';
+export const DAT_GHE = 'booking/DAT_GHE';
+export const DAT_VE = 'booking/DAT_VE';
+export const DAT_VE_THANH_CONG = 'booking/DAT_VE_THANH_CONG';
 
 export const fetchCarouselAction = async (dispatch) => {
   try {
     const res = await instance.request({
-      url: "/api/QuanLyPhim/LayDanhSachBanner",
-      method: "GET",
+      url: '/api/QuanLyPhim/LayDanhSachBanner',
+      method: 'GET',
     });
     dispatch({
       type: SET_CAROUSELS,
@@ -31,10 +31,10 @@ export const fetchCarouselAction = async (dispatch) => {
 export const fetchMoviesAction = async (dispatch) => {
   try {
     const res = await instance.request({
-      url: "/api/QuanLyPhim/LayDanhSachPhim",
-      method: "GET",
+      url: '/api/QuanLyPhim/LayDanhSachPhim',
+      method: 'GET',
       params: {
-        maNhom: "GP07",
+        maNhom: 'GP09',
       },
     });
     dispatch({
@@ -48,10 +48,10 @@ export const fetchMoviesAction = async (dispatch) => {
 export const fetchCinemaSystemAction = async (dispatch) => {
   try {
     const res = await instance.request({
-      url: "/api/QuanLyRap/LayThongTinLichChieuHeThongRap",
-      method: "GET",
+      url: '/api/QuanLyRap/LayThongTinLichChieuHeThongRap',
+      method: 'GET',
       params: {
-        maNhom: "GP10",
+        maNhom: 'GP09',
       },
     });
     dispatch({
@@ -65,8 +65,8 @@ export const fetchCinemaSystemAction = async (dispatch) => {
 export const fetchFooterAction = async (dispatch) => {
   try {
     const res = await instance.request({
-      url: "/api/QuanLyRap/LayThongTinHeThongRap",
-      method: "GET",
+      url: '/api/QuanLyRap/LayThongTinHeThongRap',
+      method: 'GET',
     });
     dispatch({
       type: SET_FOOTER,
@@ -81,8 +81,8 @@ export const fetchMoviesDetailAction = (id) => {
   return async (dispatch) => {
     try {
       const res = await instance.request({
-        url: "/api/QuanLyRap/LayThongTinLichChieuPhim",
-        method: "GET",
+        url: '/api/QuanLyRap/LayThongTinLichChieuPhim',
+        method: 'GET',
         params: {
           MaPhim: id,
         },
@@ -93,7 +93,7 @@ export const fetchMoviesDetailAction = (id) => {
         payload: res.data.content,
       });
     } catch (error) {
-      console.log("errors", error.response?.data);
+      console.log('errors', error.response?.data);
     }
   };
 };
@@ -102,8 +102,8 @@ export const fetchDanhSachPhongVeAction = (id) => {
   return async (dispatch) => {
     try {
       const res = await instance.request({
-        url: "/api/QuanLyDatVe/LayDanhSachPhongVe",
-        method: "GET",
+        url: '/api/QuanLyDatVe/LayDanhSachPhongVe',
+        method: 'GET',
         params: {
           MaLichChieu: id,
         },
@@ -114,7 +114,7 @@ export const fetchDanhSachPhongVeAction = (id) => {
         payload: res.data.content,
       });
     } catch (error) {
-      console.log("errors", error.response?.data);
+      console.log('errors', error.response?.data);
     }
   };
 };
@@ -123,8 +123,8 @@ export const fetchDatVeAction = (thongTinVe) => {
   return async (dispatch) => {
     try {
       const res = await instance.request({
-        url: "/api/QuanLyDatVe/DatVe",
-        method: "POST",
+        url: '/api/QuanLyDatVe/DatVe',
+        method: 'POST',
         data: thongTinVe,
       });
 
@@ -134,22 +134,22 @@ export const fetchDatVeAction = (thongTinVe) => {
         type: DAT_VE_THANH_CONG,
       });
       Swal.fire({
-        title: "Notification",
+        title: 'Notification',
         text: res.data.content,
-        icon: "success",
-        confirmButtonColor: "#1c7403",
+        icon: 'success',
+        confirmButtonColor: '#1c7403',
       }).then((res) => {
         if (res.isConfirmed) {
-          history.push("/");
+          history.push('/');
         }
       });
 
       console.log(res);
     } catch (error) {
       Swal.fire({
-        title: "Đặt Vé Thất Bại!",
+        title: 'Đặt Vé Thất Bại!',
         text: error.response?.data.content,
-        icon: "error",
+        icon: 'error',
       });
     }
   };
