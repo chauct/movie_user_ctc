@@ -1,39 +1,31 @@
-import { Button, Input } from "antd";
-import React, { useState } from "react";
-import styles from "./style.module.css";
+import { Button, Input } from 'antd';
+import React, { useState } from 'react';
+import styles from './style.module.css';
 
-import { useFormik } from "formik";
+import { useFormik } from 'formik';
 
-import * as yup from "yup";
-import instance from "api/instance";
-import { useHistory } from "react-router-dom";
-import Swal from "sweetalert2";
+import * as yup from 'yup';
+import instance from 'api/instance';
+import { useHistory } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
 
 const schema = yup.object().shape({
   taiKhoan: yup
     .string()
-    .required("*Tài khoản không được bỏ trống")
-    .min(6, "*Tài khoản phải lớn hơn 6 kí tự")
+    .required('*Tài khoản không được bỏ trống')
+    .min(6, '*Tài khoản phải lớn hơn 6 kí tự')
     .matches(
       /^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$/,
-      "*Tài khoản không được có khoảng trắng và ký tự đặc biệt "
+      '*Tài khoản không được có khoảng trắng và ký tự đặc biệt '
     ),
-  matKhau: yup
-    .string()
-    .required("*Mật khẩu không được bỏ trống")
-    .min(6, "*Mật khẩu phải lớn hơn 6 kí tự "),
-  hoTen: yup.string().required("*Họ tên không được bỏ trống "),
-  email: yup
-    .string()
-    .required("*Email không được bỏ trống")
-    .email("*Email không đúng định dạng"),
+  matKhau: yup.string().required('*Mật khẩu không được bỏ trống').min(6, '*Mật khẩu phải lớn hơn 6 kí tự '),
+  hoTen: yup.string().required('*Họ tên không được bỏ trống '),
+  email: yup.string().required('*Email không được bỏ trống').email('*Email không đúng định dạng'),
   soDt: yup
     .string()
-    .required("*Điện thoại không được bỏ trống ")
-    .matches(
-      /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/g,
-      "Số điện thoại không hợp lệ"
-    ),
+    .required('*Điện thoại không được bỏ trống ')
+    .matches(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/g, 'Số điện thoại không hợp lệ'),
 });
 
 function Signup() {
@@ -43,14 +35,14 @@ function Signup() {
 
   const formik = useFormik({
     initialValues: {
-      taiKhoan: "",
-      matKhau: "",
-      hoTen: "",
-      email: "",
-      soDt: "",
+      taiKhoan: '',
+      matKhau: '',
+      hoTen: '',
+      email: '',
+      soDt: '',
     },
     onSubmit: (values) => {
-      const newUser = { ...values, maNhom: "GP07" };
+      const newUser = { ...values, maNhom: 'GP07' };
       signUp(newUser);
     },
     validationSchema: schema,
@@ -60,25 +52,25 @@ function Signup() {
     try {
       setIsLoading(true);
       const res = await instance.request({
-        url: "/api/QuanLyNguoiDung/DangKy",
-        method: "POST",
+        url: '/api/QuanLyNguoiDung/DangKy',
+        method: 'POST',
         data: user,
       });
       Swal.fire({
-        title: "Đăng kí thành công!",
-        icon: "success",
-        confirmButtonColor: "#1c7403",
+        title: 'Đăng kí thành công!',
+        icon: 'success',
+        confirmButtonColor: '#1c7403',
       }).then((res) => {
         if (res.isConfirmed) {
-          history.push("/signin");
+          history.push('/signin');
         }
       });
       console.log(res);
     } catch (error) {
       Swal.fire({
         title: error.response.data.content,
-        icon: "error",
-        confirmButtonColor: "#d00000",
+        icon: 'error',
+        confirmButtonColor: '#d00000',
       });
     } finally {
       setIsLoading(false);
@@ -93,10 +85,10 @@ function Signup() {
           <Input
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
-            name="taiKhoan"
+            name='taiKhoan'
             className={styles.input}
-            type="text"
-            placeholder="Tên Tài Khoản"
+            type='text'
+            placeholder='Tên Tài Khoản'
           />
           {formik.touched.taiKhoan && formik.errors.taiKhoan && (
             <span className={styles.errorText}>{formik.errors.taiKhoan}</span>
@@ -104,10 +96,10 @@ function Signup() {
           <Input
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
-            name="matKhau"
+            name='matKhau'
             className={styles.input}
-            type="password"
-            placeholder="Mật Khẩu"
+            type='password'
+            placeholder='Mật Khẩu'
           />
           {formik.touched.matKhau && formik.errors.matKhau && (
             <span className={styles.errorText}>{formik.errors.matKhau}</span>
@@ -116,10 +108,10 @@ function Signup() {
           <Input
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
-            name="hoTen"
+            name='hoTen'
             className={styles.input}
-            type="text"
-            placeholder="Họ Và Tên"
+            type='text'
+            placeholder='Họ Và Tên'
           />
           {formik.touched.hoTen && formik.errors.hoTen && (
             <span className={styles.errorText}>{formik.errors.hoTen}</span>
@@ -128,10 +120,10 @@ function Signup() {
           <Input
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
-            name="email"
+            name='email'
             className={styles.input}
-            type="text"
-            placeholder="Email"
+            type='text'
+            placeholder='Email'
           />
 
           {formik.touched.email && formik.errors.email && (
@@ -142,22 +134,28 @@ function Signup() {
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
             className={styles.input}
-            name="soDt"
-            type="text"
-            placeholder="Số Điện Thoại"
+            name='soDt'
+            type='text'
+            placeholder='Số Điện Thoại'
           />
-          {formik.touched.soDt && formik.errors.soDt && (
-            <span className={styles.errorText}>{formik.errors.soDt}</span>
-          )}
+          {formik.touched.soDt && formik.errors.soDt && <span className={styles.errorText}>{formik.errors.soDt}</span>}
 
           <Button
             loading={isLoading}
-            htmlType="submit"
-            type="primary"
-            className={styles.btn_signup}
-          >
+            htmlType='submit'
+            type='primary'
+            className={styles.btn_signup}>
             Đăng Ký
           </Button>
+
+          <p className={styles.login}>
+            Quý khách đã có Tài khoản?
+            <NavLink
+              className={styles.navLink}
+              to='/signin'>
+              Đăng Nhập
+            </NavLink>
+          </p>
         </form>
       </div>
     </div>

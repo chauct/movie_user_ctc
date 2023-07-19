@@ -1,4 +1,4 @@
-import produce from "immer";
+import produce from 'immer';
 
 import {
   DAT_GHE,
@@ -11,7 +11,7 @@ import {
   SET_PHIM_DANG_CHIEU,
   SET_PHIM_SAP_CHIEU,
   THONG_TIN_PHONG_VE,
-} from "./action";
+} from './action';
 
 const initialState = {
   carousel: [],
@@ -42,29 +42,17 @@ const reducer = (state = initialState, action) => {
       return nextState;
     }
 
-    //  dots: true,
-    // infinite: true,
-    // slidesToShow: 4,
-    // slidesToScroll: 1,
-    // autoplay: true,
-    // autoplaySpeed: 2000,
-    // rtl: true,
-    // row: 2,
     case SET_PHIM_DANG_CHIEU: {
       const nextState = produce(state, (draft) => {
         draft.dangChieu = !draft.dangChieu;
-        draft.movies = draft.moviesDefault.filter(
-          (film) => film.dangChieu === draft.dangChieu
-        );
+        draft.movies = draft.moviesDefault.filter((film) => film.dangChieu === draft.dangChieu);
       });
       return nextState;
     }
     case SET_PHIM_SAP_CHIEU: {
       const nextState = produce(state, (draft) => {
         draft.sapChieu = !draft.sapChieu;
-        draft.movies = draft.moviesDefault.filter(
-          (film) => film.sapChieu === draft.sapChieu
-        );
+        draft.movies = draft.moviesDefault.filter((film) => film.sapChieu === draft.sapChieu);
       });
       return nextState;
     }
@@ -95,9 +83,7 @@ const reducer = (state = initialState, action) => {
     case DAT_GHE: {
       const nextState = produce(state, (draft) => {
         const danhSachGheDangDat = draft.danhSachGheDangDat;
-        const index = danhSachGheDangDat.findIndex(
-          (gheDD) => gheDD.maGhe === action.gheDangDat.maGhe
-        );
+        const index = danhSachGheDangDat.findIndex((gheDD) => gheDD.maGhe === action.gheDangDat.maGhe);
         if (index !== -1) {
           // Nếu tìm thấy ghế được chọn trong mảng có nghĩa là trước đó đã click vào rồi => xóa đi
           danhSachGheDangDat.splice(index, 1);
