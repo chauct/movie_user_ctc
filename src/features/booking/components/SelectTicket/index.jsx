@@ -45,7 +45,7 @@ function SelectTicket() {
         url: '/api/QuanLyPhim/LayDanhSachPhim',
         method: 'GET',
         params: {
-          maNhom: 'GP09',
+          maNhom: 'GP01',
         },
       });
 

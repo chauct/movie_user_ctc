@@ -34,7 +34,7 @@ export const fetchMoviesAction = async (dispatch) => {
       url: '/api/QuanLyPhim/LayDanhSachPhim',
       method: 'GET',
       params: {
-        maNhom: 'GP09',
+        maNhom: 'GP01',
       },
     });
     dispatch({
@@ -51,7 +51,7 @@ export const fetchCinemaSystemAction = async (dispatch) => {
       url: '/api/QuanLyRap/LayThongTinLichChieuHeThongRap',
       method: 'GET',
       params: {
-        maNhom: 'GP09',
+        maNhom: 'GP01',
       },
     });
     dispatch({
